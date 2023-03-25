@@ -23,13 +23,10 @@
                 <div class="card card-products">
                   <img src="{{product.image.url}}" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <p class="card-title">{{product.name| truncatechars:15 | safe}}</p>
+                      <a href="/productdetail/{{product.slug}}"><p class="card-title">{{product.name| truncatechars:15 | safe}}</p></a>
                       <p class="text-muted p-0">{{product.desc| truncatechars:55 | safe}}</p>
                       <p class="card-text">₹{{product.price}}</p>
-                    
                       <a  class="btn btn-primary addtocart" data-action = "add" data-product = "{{product.id}}">Add to Cart</a>
-                
-                      
                     </div>
                   </div>
           </div>

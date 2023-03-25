@@ -13,7 +13,6 @@ class CompleteProfile(models.Model):
     state = models.CharField(max_length=255)
     zipcode = models.CharField(max_length=255)
     
-
 class Products(models.Model):
     comp_name = models.CharField(max_length=255)
     product_id = models.AutoField
@@ -27,12 +26,10 @@ class Products(models.Model):
     ratings = models.CharField(max_length=255)
     stock_status = models.CharField(max_length=255)
 
-
 class Cart(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
     cart_id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
     completed = models.BooleanField(default=False)
-
 
     @property
     def get_cart_total(self):
@@ -54,15 +51,12 @@ class Cartitems(models.Model):
     product =  models.ForeignKey(Products, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
 
-
     @property
     def get_total(self):
         total = float(self.quantity) * float(self.product.price)
         if total == 0.00:
             self.delete()
         return total
-
-    
 
     def __str__(self):
         return self.product.name

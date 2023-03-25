@@ -117,17 +117,28 @@ def farmerupload(request):
         category = request.POST.get('category')
         image = request.FILES.get('image')
 
-        farmProd.prodName = prodName
-        farmProd.compName = compName
+        farmProd.name = prodName
+        farmProd.comp_name = compName
         farmProd.desc = desc
         farmProd.price = price
-        farmProd.discPrice =discPrice
-        farmProd.coupons = coupons
-        farmProd.category =category
+        farmProd.discounted_price =discPrice
         farmProd.image = image
         farmProd.save()
-        return HttpResponse("Successfully Regitered")
+        return redirect('farmerproduct')
     else:
         return render(request , 'farmerupload.html')
     
 
+
+def updateproduct(request,id):
+    product_details = Products.objects.get(id=id)
+    if request.method == "POST":
+        product_details.name = request.POST.get('prodName')
+        product_details.comp_name = request.POST.get('compName')
+        product_details.desc = request.POST.get('desc')
+        product_details.price = request.POST.get('price')
+        product_details.category = request.POST.get('category')
+        product_details.image = request.FILES.get('image')
+        product_details.save()
+        print("Successfully updated!")
+    return render(request,'updateproduct.html',{"product_details":product_details})

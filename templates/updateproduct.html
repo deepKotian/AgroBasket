@@ -1,0 +1,64 @@
+{% extends 'farmerbase.html' %}
+{% load static %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/farmerupload.css' %}">
+<div class="customer-profile">
+    <div class="customer-profile-heading">
+        <p>Upload a product</p>
+    </div>
+    <div class="customer-profile-desc">
+        Upload a product you want to sell at AgroBasket
+    </div>
+<div class="customer-profile-form">
+<form class="row g-3" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Product Name :</label>
+      <input type="text" class="form-control" id="inputEmail4" name="prodName" placeholder="Product Name" value="{{product_details.name}}">
+    </div>
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Company Name :</label>
+        <input type="text" class="form-control" id="inputPassword4" name="compName" placeholder="Company Name" value="{{product_details.comp_name}}">
+      </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Description :</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="Description of the product to be uploaded" name="desc" placeholder="Description" value="{{product_details.desc}}">
+    </div>
+    <div class="col-md-3">
+      <label for="inputCity" class="form-label">Price :</label>
+      <input type="text" class="form-control" id="inputCity" name="price" placeholder="Price" value="{{product_details.price}}">
+    </div>
+    <div class="col-md-3">
+        <label for="inputState" class="form-label">Discounted Price :</label>
+        <input type="text" class="form-control" id="inputState" name="discPrice" placeholder="Discounted Price" value="{{product_details.discounted_price}}">
+      </div>
+    <div class="col-md-2">
+      <label for="inputZip" class="form-label">Coupon :</label>
+      <input type="text" class="form-control" id="inputZip" name="coupons" placeholder="Coupons" value="{{product_details.coupons}}">
+    </div>
+    <div class="col-md-3" style="margin-top:-0.5rem"><br>
+        <label for="inputZip" class="form-label">Category :</label>
+      <input type="text" class="form-control" id="inputZip" name="category" placeholder="Category" value="{{product_details.category}}">
+    </div>
+      <div class="col-12" style="text-align: -webkit-center">
+      <!--   <input type="file"  accept="image/gif, image/jpeg, image/png" name="image" id="upload" onchange="loadFile(event)" style="display: none;">
+      <p><button type="button" id="btnFile" class="btn btn-primary" onclick="upload.click()" style="margin-top: 0.5rem">Upload Image</button></p></input> -->
+      <label class="form-check-label" for="inlineRadio1">Upload image:</label>
+            <input type="file" id="myFile" name="image">
+        <p><img id="output" width="200" /></p>
+      
+    </div>
+   
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Update Product</button>
+    </div>
+  </form>
+</div>
+</div>
+<script>
+    var loadFile = function(event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+    </script>
+{% endblock content %}

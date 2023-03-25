@@ -9,18 +9,21 @@
     <div class="p-4">
 <div class="cards-container" style="margin-top: 3rem !important">
 <ul class="cards">
+  {% for product  in allProducts %}
     <li class="cards__item">
       <div class="card">
         <div class="card__image">
-          <img src="https://images.unsplash.com/photo-1583663848850-46af132dc08e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" class="card-img-top" alt="...">
+          <img src="{{product.image.url}}" class="card-img-top" alt="...">
        </div>
         <div class="card__content">
-          <div class="card__title">Brocoli</div>
-          <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink and flex-basis) are optional. Default is 0 1 auto. </p>
-          <button class="btn btn--block card__btn">Edit</button>
+          {{request.user}}
+          <div class="card__title">{{product.name}}</div>
+          <p class="card__text">{{product.desc}}</p>
+          <button class="btn btn--block card__btn" onclick="location.href='updateproduct/{{product.id}}'">Edit</button>
         </div>
       </div>
     </li>
+    {% endfor %}
     <li class="cards__item">
       <div class="card">
         <div class="card__image">

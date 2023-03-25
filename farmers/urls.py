@@ -12,5 +12,5 @@ urlpatterns = [
    path('/farmerproduct', views.farmerproduct, name='farmerproduct'),
    path('/farmerupload', views.farmerupload, name='farmerupload'),
    path('/createprofile', views.createprofile,name='createprofile'),
-   path('/updateprofile', views.updateprofile, name='updateprofile'),
+   path('/updateproduct/<int:id>', views.updateproduct, name='updateproduct'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -4,9 +4,12 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from customers.models import CompleteProfile,Products,Cart,Cartitems
 from django.http import JsonResponse
+from django.core.mail import send_mail
+from django.core import mail
+from django.conf import settings
 import json
-from AgroBasket.settings import RAZORPAY_API_KEY, RAZORPAY_API_SECRET_KEY
-import razorpay
+""" from AgroBasket.settings import RAZORPAY_API_KEY, RAZORPAY_API_SECRET_KEY """
+""" import razorpay """
 
 # Create your views here.
 def home(request):
@@ -48,6 +51,13 @@ def register(request):
                 user = User.objects.create_user(username = username, password=password1, email=email)
                 user.save()
                 print('user created')
+                send_mail(
+                    subject = 'Welcome to AgroBasket',
+                    message = request.POST['username'] + '' 'we are happy to have you!',
+                    from_email = settings.EMAIL_HOST_USER,
+                    recipient_list = [request.POST['email']],
+                    fail_silently = False,
+                )
                 return redirect('login')
         else:
             messages.info(request,'Password not matching..')
@@ -108,6 +118,9 @@ def customerproducts(request):
     print(allProducts)
     return render(request,"customerproducts.html",{"allProducts":allProducts})
 
+def customerproductDetail(requests):
+    return render(requests, 'customerproductDetail.html')
+
 def cart(request):
     if request.user.is_authenticated:
         customer = request.user
@@ -149,8 +162,11 @@ def updateQuantity(request):
 def track(request):
     return render(request,"customertrack.html")
 
-def productDetail(request):
-    return render(request,"productDetail.html")
+def productDetail(request, slug):
+    prod = Products.objects.filter(slug = slug).first()
+    print(prod)
+    context = {'prod': prod}
+    return render(request , 'productdetail.html', context)
 
 def payment(request):
     client = razorpay.Client(auth=("rzp_test_yOgTa9YwwHLKDR", "qDmtqkDq7Rs3OIpFDd7JDtRR"))
