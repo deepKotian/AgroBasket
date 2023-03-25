@@ -180,7 +180,15 @@ img {
 	line-height: 1.2rem;
 	height: 4rem;
   }
-
+  .card__price {
+	flex: 1 1 auto;
+	font-size: 2rem;
+	line-height: 1.5;
+	margin-top: -1rem;
+	margin-bottom: 0rem;
+	line-height: 1.2rem;
+	height: 4rem;
+  }
   @media screen and (max-width: 1440px) {
 	.cards .h1{
 	 margin-top: -20rem;

@@ -36,6 +36,10 @@
       <label for="inputZip" class="form-label">Coupon :</label>
       <input type="text" class="form-control" id="inputZip" name="coupons" placeholder="Coupons" value="{{product_details.coupons}}">
     </div>
+    <div class="col-md-2">
+        <label for="inputZip" class="form-label">Stock status :</label>
+        <input type="text" class="form-control" id="inputZip" name="stock" value="{{product_details.stock_status}}">
+      </div>
     <div class="col-md-3" style="margin-top:-0.5rem"><br>
         <label for="inputZip" class="form-label">Category :</label>
       <input type="text" class="form-control" id="inputZip" name="category" placeholder="Category" value="{{product_details.category}}">
@@ -44,8 +48,8 @@
       <!--   <input type="file"  accept="image/gif, image/jpeg, image/png" name="image" id="upload" onchange="loadFile(event)" style="display: none;">
       <p><button type="button" id="btnFile" class="btn btn-primary" onclick="upload.click()" style="margin-top: 0.5rem">Upload Image</button></p></input> -->
       <label class="form-check-label" for="inlineRadio1">Upload image:</label>
-            <input type="file" id="myFile" name="image">
-        <p><img id="output" width="200" /></p>
+            <input type="file" id="myFile" name="image" value="{{product.image.url}}">
+        <p><img id="output" width="200" value="{{product.image.url}}" /></p>
       
     </div>
    

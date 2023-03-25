@@ -5,7 +5,7 @@
 <br><br>
 <div class="welcome" style="background-color: #6da524; width: 100%; padding-top: 1rem; padding-bottom: 1rem; border-radius: 0px; color: #fff;">
     <center><h1>Welcome to My Products</h1>
-    <p class="mb-0">Hello Jone Doe, these are the products you've added!</p></center></div>
+    <p class="mb-0">Hello {{request.user}}, these are the products you've added!</p></center></div>
     <div class="p-4">
 <div class="cards-container" style="margin-top: 3rem !important">
 <ul class="cards">
@@ -19,6 +19,7 @@
           {{request.user}}
           <div class="card__title">{{product.name}}</div>
           <p class="card__text">{{product.desc}}</p>
+          <p class="card__price">₹{{product.price}}</p>
           <button class="btn btn--block card__btn" onclick="location.href='updateproduct/{{product.id}}'">Edit</button>
         </div>
       </div>

@@ -7,22 +7,23 @@
     <div class="row flex-container">
       <div class="col-lg-6 col-md-12">
         <div class="product-image">
-            <img class="sneakers img-fluid" src="{% static 'img/Banana.png' %}" alt="">
+            <img class="sneakers img-fluid" src="{{prod.image.url}}" alt="">
         </div>
       </div>
       <div class="col-lg-6 col-md-12">
         <div class="product-description">
-          <h2 class="product-title">Adidas Ultra Boost</h2>
+          <h2 class="product-title">{{prod.name}}</h2>
           <!--category-->
-          <h4 class="product-category">Fruits</h4>
-          <h3 class="product-price"><s><h6>$200</h6></s>$180</h3>
-          <p class="product-description">These running shoes combine comfort and high-performance technology for a best-ever-run feeling. </p>
+          <h4 class="product-category">{{prod.category}}</h4>
+          <h3 class="product-price"><h6>${{prod.price}}</h6></h3>
+          <p class="product-description">{{prod.desc}}</p>
         </div>      
 <!--         Buttons -->
-        <h6 class="stock">Out of Stock</h6>
+        <h6 class="stock">{{prod.stock_status}}</h6>
         <div class="row">
           <div class="col-lg-6 ">
             <button class="btn btn-primary" type="submit">Add To Cart</button>
+        
           </div>
 
         </div>
@@ -32,10 +33,11 @@
           <button type="button" id="Coupons" class="btn btn-secondary btn-lg" disabled>NEWYEARSDISCOUNT</button>
           <button type="button" id="Coupons" class="btn btn-secondary btn-lg" disabled>CHRISTMASSPECIAL</button>
           <button type="button" id="Coupons" class="btn btn-secondary btn-lg" disabled>HAPPYHOLI</button>
+
         </div>
       
 
-
+      
       
     </div>
   </div>

@@ -52,6 +52,16 @@ def farmerlogin(request):
         return render(request, 'farmerlogin.html')
 
 def farmerhome(request):
+    if request.user.is_authenticated:
+        farmer_detail = FarmerProfile.objects.get(username = request.user)
+        company = farmer_detail.comp_name
+        allProducts = Products.objects.filter(comp_name = company)
+        totalProducts = len(allProducts)
+       
+        
+       
+
+        return render(request, 'farmerhome.html',{"totalProducts":totalProducts,})
     return render(request, 'farmerhome.html')
 
 def farmerlogout(request):
@@ -128,8 +138,6 @@ def farmerupload(request):
     else:
         return render(request , 'farmerupload.html')
     
-
-
 def updateproduct(request,id):
     product_details = Products.objects.get(id=id)
     if request.method == "POST":
@@ -137,6 +145,7 @@ def updateproduct(request,id):
         product_details.comp_name = request.POST.get('compName')
         product_details.desc = request.POST.get('desc')
         product_details.price = request.POST.get('price')
+        product_details.stock_status = request.POST.get('stock')
         product_details.category = request.POST.get('category')
         product_details.image = request.FILES.get('image')
         product_details.save()

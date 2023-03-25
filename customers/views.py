@@ -186,3 +186,9 @@ def payment(request):
         }
   
     return render(request , 'payment.html', context)
+
+def productSearch(request):
+    query=request.GET['query']
+    allProd= Products.objects.filter(name__icontains=query)
+    context = {'allProd': allProd}
+    return render(request, 'productSearch.html', context)

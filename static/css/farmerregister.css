@@ -13,15 +13,36 @@
     padding: 2.5rem; 
   
   }
-  
+#login-card{
+  margin-top: -15rem;
+  width: 20%;
+  padding-top: 3rem !important;
+  border-radius: 2rem 2rem 2rem 2rem !important;
+  border: #fff;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  padding: 2rem;
+}
+#signup-card{
+  margin-top: -20rem;
+  width: 20%;
+  padding-top: 3rem !important;
+  border-radius: 2rem 2rem 2rem 2rem !important;
+  border: #fff;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  padding: 2rem;
+}
   
   .form-control {
     margin-bottom: 20px;
   }
   
-  .btn{
+  .btn-primary  {
     width: 100%;
     font-size: 16px;
+    background-color: #7ab927 !important;
+    border: none !important;
+    color: #fff;
+    padding: 0.5rem;
   }
   
   .forgot-password{
@@ -44,12 +65,16 @@
   }
   
   .login-header-image{
-    width: 80%;
+    width: 20% !important;
     margin-top: -16%;
+    border-radius: 2rem 2rem 0rem 0rem !important;
+    height: fit-content;
   }
   .signup-header-image{
-    width: 60%;
-    margin-top: -25%;
+    width: 20% !important;
+    margin-top: 0% !important;
+    border-radius: 2rem 2rem 0rem 0rem !important;
+    height: fit-content;
   }
   
   .signup-heading{
@@ -101,7 +126,6 @@
     }
       
     .btn{
-        background-color: #567995;
         font-weight: 600;
         border: none;
     }

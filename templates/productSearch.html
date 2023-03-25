@@ -26,12 +26,11 @@
         </div>
     </form>
   </center>
-
   <br>
 <div class="container container-products">
 
   <div class="row row-cols-4 row-products">
-    {% for product in allProducts %}
+    {% for product in allProd %}
           <div class="col col-products">
                 <div class="card card-products">
                   <img src="{{product.image.url}}" class="card-img-top" alt="...">
@@ -44,7 +43,7 @@
                   </div>
           </div>
           {% endfor %}
-              <div class="col col-products">
+             <!--  <div class="col col-products">
                 <div class="card card-products">
                     <img src="\static\img\football.png" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -103,7 +102,7 @@
                       
                     </div>
                   </div>
-              </div>
+              </div> -->
             </div>
           </div>
           <script src="{% static 'js/product.js' %}"></script>
