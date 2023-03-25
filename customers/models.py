@@ -61,3 +61,8 @@ class Cartitems(models.Model):
     def __str__(self):
         return self.product.name
 
+class OrderItem(models.Model):
+    orderid = models.AutoField
+    cartid = models.CharField(max_length=255)
+    total_amount = models.CharField(max_length=255)
+

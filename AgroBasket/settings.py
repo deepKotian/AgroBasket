@@ -101,12 +101,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'codefusex@gmail.com'
-EMAIL_HOST_PASSWORD = 'wvwpecnovxzpckoj'
     
 
 
@@ -138,4 +132,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "images/")
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+RAZORPAY_API_KEY = 'rzp_test_1IYlVy7eIALcLw'
+RAZORPAY_API_SECRET_KEY = 'MSvAiKYtBKESsuqlTas4NgmY'
 
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'codefusex@gmail.com'
+EMAIL_HOST_PASSWORD = 'Alastin69'

@@ -7,16 +7,16 @@ from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.core import mail
 from django.conf import settings
+from django.http import HttpResponse
 import json
-""" from AgroBasket.settings import RAZORPAY_API_KEY, RAZORPAY_API_SECRET_KEY """
-""" import razorpay """
+from AgroBasket.settings import RAZORPAY_API_KEY, RAZORPAY_API_SECRET_KEY
+import razorpay
 
 # Create your views here.
 def home(request):
     return render(request,'customerhome.html')
 
 def login(request):
-
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -30,7 +30,6 @@ def login(request):
             messages.info(request,'Invalid cedentials')
             return redirect('login')
     else:
-    
         return render(request,'customerlogin.html')
 
 def register(request):
@@ -51,18 +50,10 @@ def register(request):
                 user = User.objects.create_user(username = username, password=password1, email=email)
                 user.save()
                 print('user created')
-                send_mail(
-                    subject = 'Welcome to AgroBasket',
-                    message = request.POST['username'] + '' 'we are happy to have you!',
-                    from_email = settings.EMAIL_HOST_USER,
-                    recipient_list = [request.POST['email']],
-                    fail_silently = False,
-                )
                 return redirect('login')
         else:
             messages.info(request,'Password not matching..')
             return redirect('register')
-
     else:
          return render(request,'customerregister.html')
 
@@ -126,6 +117,7 @@ def cart(request):
         customer = request.user
         cart, created = Cart.objects.get_or_create(customer = customer, completed = False)
         cartitems = cart.cartitems_set.all()
+        
     else:
         cartitems = []
         cart = {"get_cart_total": 0, "get_itemtotal": 0}
@@ -168,27 +160,26 @@ def productDetail(request, slug):
     context = {'prod': prod}
     return render(request , 'productdetail.html', context)
 
-def payment(request):
-    client = razorpay.Client(auth=("rzp_test_yOgTa9YwwHLKDR", "qDmtqkDq7Rs3OIpFDd7JDtRR"))
-    DATA = {
-    "amount": 60000,
-    "currency": "INR",
-    "receipt": "receipt#1",
-    }
-    payment_order = client.order.create(data=DATA)
-    payment_order_id = payment_order['id']
-    prod = Cart.objects.filter().first()
-    print(prod)
-    context = {
-        'prod': prod,
-        'api_key': RAZORPAY_API_KEY,
-        'order_id': payment_order_id,
-        }
-  
-    return render(request , 'payment.html', context)
+client = razorpay.Client(auth=("rzp_test_yOgTa9YwwHLKDR", "qDmtqkDq7Rs3OIpFDd7JDtRR"))
+def checkout(request,token):
+    cartitems = Cart.objects.get(cart_id=token)
+    allcartprod = Cartitems.objects.filter(cart=cartitems)
+    totalprice = []
+    for prod in allcartprod:
+        totalprice.append(float(prod.product.price)*float(prod.quantity))
+
+    Amount = sum(totalprice)
+    order_amount = Amount
+    order_currency = 'INR'
+    payment = client.order.create(dict(amount = order_amount, currency= order_currency,payment_capture = 1))
+    payment_id = payment['id']
+    context={'amount':order_amount,'api_key':RAZORPAY_API_KEY,'payment_id':payment_id}
+
+
+    return render(request,'payment.html',context)
 
 def productSearch(request):
     query=request.GET['query']
     allProd= Products.objects.filter(name__icontains=query)
-    context = {'allProd': allProd}
-    return render(request, 'productSearch.html', context)
+    params = {'allProd': allProd}
+    return render(request, 'productSearch.html', params)
