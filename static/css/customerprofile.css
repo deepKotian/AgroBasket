@@ -1,0 +1,21 @@
+.customer-profile{
+    width: 50%;
+    margin: auto;
+    margin-top: 1.5rem;
+}
+
+.customer-profile-heading{
+    font-size: 2rem;
+}
+
+.customer-profile-form{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    padding: 1rem;
+}
+
+.customer-profile-desc{
+    margin-bottom: 1rem;
+    margin-top: -0.4rem;
+    opacity: 0.7;
+}
+

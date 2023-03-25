@@ -1,0 +1,91 @@
+{% extends 'customerbase.html' %}
+{% load static %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/customerprofile.css' %}">
+{% if existingprofile == 0 %}
+<div class="customer-profile">
+    <div class="customer-profile-heading">
+        <p>Personal Profile</p>
+    </div>
+    <div class="customer-profile-desc">
+        Complete your profile! It will help AgroBasket to keep track of the delivery address for smooth delivery of the packages
+    </div>
+<div class="customer-profile-form">
+<form class="row g-3" method="post" action="createprofile">
+    {% csrf_token %}
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Full Name</label>
+      <input type="text" class="form-control" id="inputEmail4" name="fullname">
+    </div>
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Email Address</label>
+      <input type="email" class="form-control" id="inputPassword4" name="email">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Address</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address">
+    </div>
+    <div class="col-md-6">
+      <label for="inputCity" class="form-label">City</label>
+      <input type="text" class="form-control" id="inputCity" name="city">
+    </div>
+    <div class="col-md-4">
+        <label for="inputState" class="form-label">State</label>
+        <input type="text" class="form-control" id="inputState" name="state">
+      </div>
+    <div class="col-md-2">
+      <label for="inputZip" class="form-label">Zip</label>
+      <input type="text" class="form-control" id="inputZip" name="zip">
+    </div>
+   
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
+</div>
+{% else %}
+<div class="customer-profile">
+    <div class="customer-profile-heading">
+        <p>Personal Profile</p>
+    </div>
+    <div class="customer-profile-desc">
+        Complete your profile! It will help AgroBasket to keep track of the delivery address for smooth delivery of the packages
+    </div>
+<div class="customer-profile-form">
+<form class="row g-3">
+ 
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Full Name :</label>
+        <div class="full-name">{{profiledetails.fullName}}</div>
+    </div>
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Email Address :</label>
+          <div class="full-email">{{profiledetails.emailAddress}}</div>
+      </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Address :</label>
+      <div class="full-address">{{profiledetails.address}}</div>
+    </div>
+    <div class="col-md-6">
+      <label for="inputCity" class="form-label">City :</label>
+      <div class="full-city">{{profiledetails.city}}</div>
+    </div>
+    <div class="col-md-4">
+        <label for="inputState" class="form-label">State :</label>
+        <div class="full-state">{{profiledetails.state}}</div>
+      </div>
+    <div class="col-md-2">
+      <label for="inputZip" class="form-label">Zip :</label>
+      <div class="full-zip">{{profiledetails.zipcode}}</div>
+    </div>
+   
+    <div class="col-12">
+      <button type="button" class="btn btn-primary" onclick="location.href='/userprofile/updateprofile'">Update</button>
+    </div>
+  </form>
+</div>
+</div>
+{% endif %}
+
+  {% endblock %}

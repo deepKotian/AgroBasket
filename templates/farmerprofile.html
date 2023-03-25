@@ -1,0 +1,50 @@
+{% extends 'farmerbase.html' %}
+{% load static %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/farmerproduct.css' %}">
+<link rel ="stylesheet" href="{% static 'css/customerprofile.css' %}">
+<!-- {% if existingprofile == 0 %} -->
+<div class="customer-profile">
+  <div class="customer-profile-heading">
+      <p>Personal Profile</p>
+  </div>
+  <div class="customer-profile-desc">
+      Update your profile! It will help AgroBasket to keep track of the delivery address for smooth delivery of the packages
+  </div>
+<div class="customer-profile-form">
+<form class="row g-3" method="post" action="updateprofile">
+  {% csrf_token %}
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Full Name :</label>
+    <input type="text" class="form-control" id="inputEmail4" name="fullname" placeholder="{{user_profile.fullName}}" value="{{user_profile.fullName}}">
+  </div>
+  <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Email Address :</label>
+      <input type="email" class="form-control" id="inputPassword4" name="email" placeholder="{{user_profile.emailAddress}}" value="{{user_profile.emailAddress}}"">
+    </div>
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Address :</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address" placeholder="{{user_profile.address}}" value="{{user_profile.address}}">
+  </div>
+  <div class="col-md-6">
+    <label for="inputCity" class="form-label">City :</label>
+    <input type="text" class="form-control" id="inputCity" name="city" placeholder="{{user_profile.city}}" value="{{user_profile.city}}">
+  </div>
+  <div class="col-md-4">
+      <label for="inputState" class="form-label">State :</label>
+      <input type="text" class="form-control" id="inputState" name="state" placeholder="{{user_profile.state}}" value="{{user_profile.state}}">
+    </div>
+  <div class="col-md-2">
+    <label for="inputZip" class="form-label">Zip :</label>
+    <input type="text" class="form-control" id="inputZip" name="zip" placeholder="{{user_profile.zipcode}}" value="{{user_profile.zipcode}}">
+  </div>
+ 
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Update</button>
+  </div>
+</form>
+</div>
+</div>
+{% endif %}
+
+{% endblock content %}

@@ -1,3 +1,4 @@
 from django.contrib import admin
+from farmers.models import FarmerProduct
 
-# Register your models here.
+admin.site.register(FarmerProduct)

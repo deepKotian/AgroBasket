@@ -21,9 +21,4 @@
     font-weight: 500;
   }
 
-  @media only screen and (min-width: 600px) {
-    .container-desktop{
-        visibility: hidden;
-    }
-  }
 

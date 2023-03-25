@@ -4,8 +4,12 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-   path('/register', views.register, name='register'),
-   path('/login', views.login, name='login'),
-   path('/', views.home, name='home')
+   path('/farmerregister', views.farmerregister, name='farmerregister'),
+   path('/farmerlogin', views.farmerlogin, name='farmerlogin'),
+   path('/farmerhome', views.farmerhome, name='farmerhome'),
+   path('/farmerlogout', views.farmerlogout, name='farmerlogout'),
+   path('/farmerprofile', views.farmerprofile, name='farmerprofile'),
+   path('/farmerproduct', views.farmerproduct, name='farmerproduct'),
+   path('/farmerupload', views.farmerupload, name='farmerupload')
     
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

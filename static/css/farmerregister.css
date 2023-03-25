@@ -1,0 +1,193 @@
+.login-heading{
+    font-size: 1.3rem;
+    text-align: center;
+    color: #273840;
+    margin-top: -1rem;
+  }
+  .login-box {
+    width: 22rem;
+    text-align: center;
+    margin: auto;
+    margin-top: -1rem;
+    background-color: white;
+    padding: 2.5rem; 
+  
+  }
+  
+  
+  .form-control {
+    margin-bottom: 20px;
+  }
+  
+  .btn{
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  .forgot-password{
+    text-decoration: none;
+    text-align: center;
+    color: #273840;
+   
+  }
+  
+  .username-message{
+    font-size: 0.8rem;
+    color: red;
+    margin-top: -0.9rem;
+  }
+  
+  .btn{
+    background-color: #567995;
+    font-weight: 600;
+    border: none;
+  }
+  
+  .login-header-image{
+    width: 80%;
+    margin-top: -16%;
+  }
+  .signup-header-image{
+    width: 60%;
+    margin-top: -25%;
+  }
+  
+  .signup-heading{
+    font-size: 1.3rem;
+    text-align: center;
+    color: #273840;
+    margin-top: 1rem;
+  }
+  
+  @media only screen and (min-width: 768px) {
+  
+    .login-heading{
+        font-size: 2rem;
+        text-align: center;
+        color: #273840;
+        margin-top: -2rem;
+    }
+    .login-box {
+        width: 25rem;
+        text-align: center;
+        margin: auto;
+        margin-top: -1rem;
+        background-color: white;
+        padding: 2.5rem; 
+      
+    }
+      
+    
+    .form-control {
+        margin-bottom: 20px;
+    }
+    
+    .btn{
+        width: 100%;
+        font-size: 18px;
+    }
+    
+    .forgot-password{
+        text-decoration: none;
+        text-align: center;
+        color: #273840;
+       
+    }
+    
+    .username-message{
+        font-size: 0.8rem;
+        color: red;
+        margin-top: -0.9rem;
+    }
+      
+    .btn{
+        background-color: #567995;
+        font-weight: 600;
+        border: none;
+    }
+    
+    .login-header-image{
+        width: 25%;
+        margin-top: -6rem;
+    }
+    .signup-header-image{
+        width: 25%;
+        margin-top: -5%;
+    }
+    
+    .signup-heading{
+        font-size: 2rem;
+        text-align: center;
+        color: #273840;
+        margin-top: 1rem;
+    }
+    
+  
+  }
+  
+  /*For Tablets*/
+  @media only screen 
+    and (min-device-width: 768px) 
+    and (max-device-width: 1024px) 
+    and (-webkit-min-device-pixel-ratio: 1) {
+      .login-heading{
+        font-size: 2rem;
+        text-align: center;
+        color: #273840;
+        margin-top: -1rem;
+    }
+    .login-box {
+        width: 25rem;
+        text-align: center;
+        margin: auto;
+        margin-top: -1rem;
+        background-color: white;
+        padding: 2.5rem; 
+      
+    }
+      
+    
+    .form-control {
+        margin-bottom: 20px;
+    }
+    
+    .btn{
+        width: 100%;
+        font-size: 18px;
+    }
+    
+    .forgot-password{
+        text-decoration: none;
+        text-align: center;
+        color: #273840;
+       
+    }
+    
+    .username-message{
+        font-size: 0.8rem;
+        color: red;
+        margin-top: -0.9rem;
+    }
+      
+    .btn{
+        background-color: #567995;
+        font-weight: 600;
+        border: none;
+    }
+    
+    .login-header-image{
+        width: 65%;
+        margin-top: 5rem;
+    }
+    .signup-header-image{
+        width: 25%;
+        margin-top: -5%;
+    }
+    
+    .signup-heading{
+        font-size: 2rem;
+        text-align: center;
+        color: #273840;
+        margin-top: 1rem;
+    }
+    }

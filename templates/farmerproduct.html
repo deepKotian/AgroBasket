@@ -1,0 +1,74 @@
+{% extends 'farmerbase.html' %}
+{% load static %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/farmerproduct.css' %}">
+<br><br>
+<div class="welcome" style="background-color: #6da524; width: 100%; padding-top: 1rem; padding-bottom: 1rem; border-radius: 0px; color: #fff;">
+    <center><h1>Welcome to My Products</h1>
+    <p class="mb-0">Hello Jone Doe, these are the products you've added!</p></center></div>
+    <div class="p-4">
+<div class="cards-container" style="margin-top: 3rem !important">
+<ul class="cards">
+    <li class="cards__item">
+      <div class="card">
+        <div class="card__image">
+          <img src="https://images.unsplash.com/photo-1583663848850-46af132dc08e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" class="card-img-top" alt="...">
+       </div>
+        <div class="card__content">
+          <div class="card__title">Brocoli</div>
+          <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink and flex-basis) are optional. Default is 0 1 auto. </p>
+          <button class="btn btn--block card__btn">Details</button>
+        </div>
+      </div>
+    </li>
+    <li class="cards__item">
+      <div class="card">
+        <div class="card__image">
+          <img src="https://images.unsplash.com/photo-1558818498-28c1e002b655?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" class="card-img-top" alt="...">
+        </div>
+        <div class="card__content">
+          <div class="card__title">Tomatoes</div>
+          <p class="card__text">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves as a proportion.</p>
+          <button class="btn btn--block card__btn">Details</button>
+        </div>
+      </div>
+    </li>
+    <li class="cards__item">
+      <div class="card">
+        <div class="card__image">
+          <img src="https://images.unsplash.com/photo-1590868309235-ea34bed7bd7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80" class="card-img-top" alt="...">
+        </div>
+        <div class="card__content">
+          <div class="card__title">Carrots</div>
+          <p class="card__text">This defines the ability for a flex item to shrink if necessary. Negative numbers are invalid.</p>
+          <button class="btn btn--block card__btn">Details</button>
+        </div>
+      </div>
+    </li>
+    <li class="cards__item">
+      <div class="card">
+        <div class="card__image">
+          <img src="https://images.unsplash.com/photo-1612823711171-e296662098fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" class="card-img-top" alt="...">
+        </div>
+        <div class="card__content">
+          <div class="card__title">Garlic</div>
+          <p class="card__text">This defines the default size of an element before the remaining space is distributed."</p>
+          <button class="btn btn--block card__btn">Details</button>
+        </div>
+      </div>
+    </li>
+    <li class="cards__item">
+      <div class="card">
+        <div class="card__image">
+          <img src="https://images.unsplash.com/photo-1590165482129-1b8b27698780?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2127&q=80" class="card-img-top" alt="...">
+        </div>
+        <div class="card__content">
+          <div class="card__title">Potatoes</div>
+          <p class="card__text">This defines the default size of an element before the remaining space is distributed."</p>
+          <button class="btn btn--block card__btn">Details</button>
+        </div>
+      </div>
+    </li></div>
+     
+
+{% endblock content %}

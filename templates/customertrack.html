@@ -1,0 +1,70 @@
+{% extends 'customerbase.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/customertrack.css' %}">
+<center>
+<div class="container" id="mainwrapper" >
+    <div class="row">
+        <div class="col-12 col-md-10 pb20">
+                <div class="row justify-content-between">
+                  
+                    
+                   
+                    <div class="order-tracking completed">
+                        <span class="is-complete"></span>
+                        <p>Ordered<br><span>Mon, June 24</span></p>
+                    </div>
+                   
+                    <div class="order-tracking completed">
+                        <span class="is-complete"></span>
+                        <p>Shipped<br><span>Tue, June 25</span></p>
+                    </div>
+                 
+                    <div class="order-tracking">
+                        <span class="is-complete"></span>
+                        <p>Shipped<br><span>Tue, June 25</span></p>
+                    </div>
+                  
+                 
+                 
+                
+             
+
+                </div>
+            </div>
+        </div>
+  </div>
+</center>
+  <div class="order-summary">
+    <div class="order-summary-header text-center">
+        Order Summary
+    </div>
+
+    <div class="order-summary-main">
+
+        <div class="order-desc">
+            <strong>Item:</strong> Sample heading
+        </div>
+        <div class="order-desc-add">
+            <strong>Description:</strong> This is a dummy description of the above product
+        </div>
+        <div class="order-desc-price">
+            <strong>Total Price:</strong> $20
+        </div>
+
+        <div class="estimated-date">
+            <strong>Will be delivered on:</strong>  18/04/2023
+        </div>
+    </div>
+
+    <div class="order-footer">
+        <span class="thankyou">Thank you!</span><br> For choosing our website for your recent purchase. Your support means everything to us and helps us to make a difference. 
+    </div>
+  </div>
+
+  <div class="description text-center">
+    <h1>No live orders..</h1>
+  <h6>"Experience the ultimate shopping satisfaction - Shop now on our website!"</h6>
+  </div>
+{% endblock content %}

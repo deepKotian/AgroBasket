@@ -1,1 +1,464 @@
-<div>Hello World</div>
+{% extends 'farmerbase.html' %}
+{% load static %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/farmerhome.css' %}">
+    
+<!-- partial:index.partial.html -->
+<!-- <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
+  <i class="uil-bars close-aside d-md-none d-lg-none" data-close="show-side-navigation1"></i>
+  <div class="sidebar-header d-flex justify-content-center align-items-center px-3 py-4">
+    <img
+         class="rounded-circle img"
+         width="65"
+         height="65"
+         src="https://images.unsplash.com/photo-1609252509102-aa73ff792667?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+         alt="" style="object-fit: cover;">
+    <div class="ms-2">
+      <h5 class="fs-6 mb-0">
+        <a class="text-decoration-none" href="#">Jone Doe</a>
+      </h5>
+      <p class="mt-1 mb-0">Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+  </div>
+
+  <div class="search position-relative text-center px-4 py-3 mt-2">
+    <input type="text" class="form-control w-100 border-0" placeholder="Search here">
+    <i class="fa fa-search position-absolute d-block fs-6"></i>
+  </div>
+
+  <ul class="categories list-unstyled">
+    <li class="has-dropdown">
+      <i class="uil-estate fa-fw"></i><a href="#">Dashboard</a>
+      <ul class="sidebar-dropdown list-unstyled">
+        <li><a href="#">Lorem ipsum</a></li>
+        <li><a href="#">ipsum dolor</a></li>
+        <li><a href="#">dolor ipsum</a></li>
+        <li><a href="#">amet consectetur</a></li>
+        <li><a href="#">ipsum dolor sit</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <i class="uil-folder"></i><a href="#">File manager</a>
+    </li>
+    <li class="has-dropdown">
+      <i class="uil-calendar-alt"></i><a href="#">Calender</a>
+      <ul class="sidebar-dropdown list-unstyled">
+        <li><a href="#">Lorem ipsum</a></li>
+        <li><a href="#">ipsum dolor</a></li>
+        <li><a href="#">dolor ipsum</a></li>
+        <li><a href="#">amet consectetur</a></li>
+        <li><a href="#">ipsum dolor sit</a></li>
+      </ul>
+    </li>
+    <li class="has-dropdown">
+      <i class="uil-envelope-download fa-fw"></i><a href="#">Mailbox</a>
+      <ul class="sidebar-dropdown list-unstyled">
+        <li><a href="#">Lorem ipsum</a></li>
+        <li><a href="#">ipsum dolor</a></li>
+        <li><a href="#">dolor ipsum</a></li>
+        <li><a href="#">amet consectetur</a></li>
+        <li><a href="#">ipsum dolor sit</a></li>
+      </ul>
+    </li>
+    <li class="has-dropdown">
+      <i class="uil-shopping-cart-alt"></i><a href="#">Ecommerce</a>
+      <ul class="sidebar-dropdown list-unstyled">
+        <li><a href="#">Lorem ipsum</a></li>
+        <li><a href="#">ipsum dolor</a></li>
+        <li><a href="#">dolor ipsum</a></li>
+        <li><a href="#">amet consectetur</a></li>
+        <li><a href="#">ipsum dolor sit</a></li>
+      </ul>
+    </li>
+    <li>
+ 
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="/farmerlogout">Logout</a>
+      </li>
+      {% else %}
+      <li class="nav-item"><a href="/farmerlogin" class="nav-link">Login</a></li>
+      {% endif %}
+  
+  </li>
+    <li class="has-dropdown">
+      <i class="uil-bag"></i><a href="#">Projects</a>
+      <ul class="sidebar-dropdown list-unstyled">
+        <li><a href="#">Lorem ipsum</a></li>
+        <li><a href="#">ipsum dolor</a></li>
+        <li><a href="#">dolor ipsum</a></li>
+        <li><a href="#">amet consectetur</a></li>
+        <li><a href="#">ipsum dolor sit</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <i class="uil-setting"></i><a href="#">Settings</a>
+      <ul class="sidebar-dropdown list-unstyled">
+        <li><a href="#">Lorem ipsum</a></li>
+        <li><a href="#">ipsum dolor</a></li>
+        <li><a href="#">dolor ipsum</a></li>
+        <li><a href="#">amet consectetur</a></li>
+        <li><a href="#">ipsum dolor sit</a></li>
+      </ul>
+    </li>
+    <li class="has-dropdown">
+      <i class="uil-chart-pie-alt"></i><a href="#">Components</a>
+      <ul class="sidebar-dropdown list-unstyled">
+        <li><a href="#">Lorem ipsum</a></li>
+        <li><a href="#">ipsum dolor</a></li>
+        <li><a href="#">dolor ipsum</a></li>
+        <li><a href="#">amet consectetur</a></li>
+        <li><a href="#">ipsum dolor sit</a></li>
+      </ul>
+    </li>
+    <li class="has-dropdown">
+      <i class="uil-panel-add"></i><a href="#">Charts</a>
+      <ul class="sidebar-dropdown list-unstyled">
+        <li><a href="#">Lorem ipsum</a></li>
+        <li><a href="#">ipsum dolor</a></li>
+        <li><a href="#">dolor ipsum</a></li>
+        <li><a href="#">amet consectetur</a></li>
+        <li><a href="#">ipsum dolor sit</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <i class="uil-map-marker"></i><a href="#">Maps</a>
+    </li>
+  </ul>
+</aside> -->
+
+
+
+  <!-------Corousel--------->
+<br><br>
+  <section id="section-1">
+    <div class="content-slider">
+      <input type="radio" id="banner1" class="sec-1-input" name="banner" checked>
+      <input type="radio" id="banner2" class="sec-1-input" name="banner">
+      <input type="radio" id="banner3" class="sec-1-input" name="banner">
+      <input type="radio" id="banner4" class="sec-1-input" name="banner">
+      <div class="slider">
+        <div id="top-banner-1" class="banner">
+          <div class="banner-inner-wrapper" style="background: url(https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80) no-repeat center center; background-size: cover;">
+            <h2>Welcome To</h2>
+            <h1>Farmer's<br>AgroBasket</h1>
+            <div class="line"></div>
+            <div class="learn-more-button"><a href="#section-2">Learn More</a></div>
+          </div>
+        </div>
+        <div id="top-banner-2" class="banner">
+          <div class="banner-inner-wrapper" style="background: url(https://images.unsplash.com/photo-1634143174007-6a01d617b4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80) no-repeat center center; background-size: cover;">
+            <h2>What We Do</h2>
+            <h1>At<br>AgroBasket</h1>
+            <div class="line"></div>
+            <div class="learn-more-button"><a href="#section-4">Learn More</a></div>
+          </div>
+        </div>
+        <div id="top-banner-3" class="banner">
+          <div class="banner-inner-wrapper" style="background: url(https://images.unsplash.com/photo-1560693225-b8507d6f3aa9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80) no-repeat center center; background-size: cover;">
+            <h2>Here We Are</h2>
+            <h1>We Are<br>AgroBasket</h1>
+            <div class="line"></div>
+            <div class="learn-more-button"><a href="#section-6">Learn More</a></div>
+          </div>
+        </div>
+        <div id="top-banner-4" class="banner">
+          <div class="banner-inner-wrapper" style="background: url(https://images.unsplash.com/photo-1597868165956-03a6827955b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80) no-repeat center center; background-size: cover;">
+            <h2>Feel Free To</h2>
+            <h1>Contact<br>AgroBasket</h1>
+            <div class="line"></div>
+            <div class="learn-more-button"><a href="#main-footer">Learn More</a></div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="controls">
+          <label for="banner1"><span class="progressbar"><span class="progressbar-fill"></span></span><span>01</span> Intro</label>
+          <label for="banner2"><span class="progressbar"><span class="progressbar-fill"></span></span><span>02</span> Work</label>
+          <label for="banner3"><span class="progressbar"><span class="progressbar-fill"></span></span><span>03</span> About</label>
+          <label for="banner4"><span class="progressbar"><span class="progressbar-fill"></span></span><span>04</span> Contacts</label>
+        </div>
+      </nav>
+    </div>
+  </section>
+  
+  <!-------Corousel Ends--------->
+  <br><br>
+
+    <div class="welcome" style="background-color: #6da524; width: 100%; padding-top: 1rem; padding-bottom: 1rem; border-radius: 0px; color: #fff;">
+        <center><h1>Welcome to Dashboard</h1>
+        <p class="mb-0">Hello Jone Doe, welcome to your awesome dashboard!</p></center></div>
+        <div class="p-4">
+   
+    <br>
+
+    <section class="statistics mt-4">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
+            <i class="uil-envelope-shield fs-2 text-center bg-primary rounded-circle"></i>
+            <div class="ms-3">
+              <div class="d-flex align-items-center">
+                <h3 class="mb-0">1,245</h3> <span class="d-block ms-2">Emails</span>
+              </div>
+              <p class="fs-normal mb-0">Lorem ipsum dolor sit amet</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
+            <i class="uil-file fs-2 text-center bg-danger rounded-circle"></i>
+            <div class="ms-3">
+              <div class="d-flex align-items-center">
+                <h3 class="mb-0">34</h3> <span class="d-block ms-2">Projects</span>
+              </div>
+              <p class="fs-normal mb-0">Lorem ipsum dolor sit amet</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="box d-flex rounded-2 align-items-center p-3">
+            <i class="uil-users-alt fs-2 text-center bg-success rounded-circle"></i>
+            <div class="ms-3">
+              <div class="d-flex align-items-center">
+                <h3 class="mb-0">5,245</h3> <span class="d-block ms-2">Users</span>
+              </div>
+              <p class="fs-normal mb-0">Lorem ipsum dolor sit amet</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="charts mt-4">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="chart-container rounded-2 p-3">
+            <h3 class="fs-6 mb-3">Chart title number one</h3>
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="chart-container rounded-2 p-3">
+            <h3 class="fs-6 mb-3">Chart title number two</h3>
+            <canvas id="myChart2"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="admins mt-4">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="box">
+            <!-- <h4>Admins:</h4> -->
+            <div class="admin d-flex align-items-center rounded-2 p-3 mb-4">
+              <div class="img">
+                <img class="img-fluid rounded-pill"
+                     width="75" height="75"
+                     src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148906966/small/1501685402/enhance"
+                     alt="admin">
+              </div>
+              <div class="ms-3">
+                <h3 class="fs-5 mb-1">Joge Lucky</h3>
+                <p class="mb-0">Lorem ipsum dolor sit amet consectetur elit.</p>
+              </div>
+            </div>
+            <div class="admin d-flex align-items-center rounded-2 p-3 mb-4">
+              <div class="img">
+                <img class="img-fluid rounded-pill"
+                     width="75" height="75"
+                     src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907137/small/1501685404/enhance"
+                     alt="admin">
+              </div>
+              <div class="ms-3">
+                <h3 class="fs-5 mb-1">Joge Lucky</h3>
+                <p class="mb-0">Lorem ipsum dolor sit amet consectetur elit.</p>
+              </div>
+            </div>
+            <div class="admin d-flex align-items-center rounded-2 p-3">
+              <div class="img">
+                <img class="img-fluid rounded-pill"
+                     width="75" height="75"
+                     src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907019/small/1501685403/enhance"
+                     alt="admin">
+              </div>
+              <div class="ms-3">
+                <h3 class="fs-5 mb-1">Joge Lucky</h3>
+                <p class="mb-0">Lorem ipsum dolor sit amet consectetur elit.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="box">
+            <!-- <h4>Moderators:</h4> -->
+            <div class="admin d-flex align-items-center rounded-2 p-3 mb-4">
+              <div class="img">
+                <img class="img-fluid rounded-pill"
+                     width="75" height="75"
+                     src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907114/small/1501685404/enhance"
+                     alt="admin">
+              </div>
+              <div class="ms-3">
+                <h3 class="fs-5 mb-1">Joge Lucky</h3>
+                <p class="mb-0">Lorem ipsum dolor sit amet consectetur elit.</p>
+              </div>
+            </div>
+            <div class="admin d-flex align-items-center rounded-2 p-3 mb-4">
+              <div class="img">
+                <img class="img-fluid rounded-pill"
+                     width="75" height="75"
+                     src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907086/small/1501685404/enhance"
+                     alt="admin">
+              </div>
+              <div class="ms-3">
+                <h3 class="fs-5 mb-1">Joge Lucky</h3>
+                <p class="mb-0">Lorem ipsum dolor sit amet consectetur elit.</p>
+              </div>
+            </div>
+            <div class="admin d-flex align-items-center rounded-2 p-3">
+              <div class="img">
+                <img class="img-fluid rounded-pill"
+                     width="75" height="75"
+                     src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance"
+                     alt="admin">
+              </div>
+              <div class="ms-3">
+                <h3 class="fs-5 mb-1">Joge Lucky</h3>
+                <p class="mb-0">Lorem ipsum dolor sit amet consectetur elit.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div></div>
+    </section>
+
+    <section class="statis mt-4 text-center">
+      <div class="row">
+        <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+          <div class="box p-3" style="background-color: #6da524;">
+            <i class="uil-eye"></i>
+            <h3>5,154</h3>
+            <p class="lead">Page views</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+          <div class="box p-3" style="background-color: #6da524;">
+            <i class="uil-user"></i>
+            <h3>245</h3>
+            <p class="lead">User registered</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+          <div class="box p-3" style="background-color: #6da524;">
+            <i class="uil-shopping-cart"></i>
+            <h3>5,154</h3>
+            <p class="lead">Product sales</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="box p-3" style="background-color: #6da524;">
+            <i class="uil-feedback"></i>
+            <h3>5,154</h3>
+            <p class="lead">Transactions</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="charts mt-4">
+      <div class="chart-container p-3">
+        <h3 class="fs-6 mb-3">Chart title number three</h3>
+        <div style="height: 300px">
+          <canvas id="chart3" width="100%"></canvas>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+<br><br>
+
+    <div class="welcome" style="background-color: #6da524; width: 100%; padding-top: 1rem; padding-bottom: 1rem; border-radius: 0px; color: #fff;">
+        <center><h1>Top Selling</h1>
+        <p class="mb-0">Hello Jone Doe, these are your top selling products!</p></center></div>
+        <div class="p-4">
+   
+    <br>
+
+
+<!---------Cards------------->
+
+<ul class="cards">
+  <li class="cards__item">
+    <div class="card">
+      <div class="card__image">
+        <img src="https://images.unsplash.com/photo-1583663848850-46af132dc08e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" class="card-img-top" alt="...">
+     </div>
+      <div class="card__content">
+        <div class="card__title">Brocoli</div>
+        <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink and flex-basis) are optional. Default is 0 1 auto. </p>
+        <button class="btn btn--block card__btn">Details</button>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item">
+    <div class="card">
+      <div class="card__image">
+        <img src="https://images.unsplash.com/photo-1558818498-28c1e002b655?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" class="card-img-top" alt="...">
+      </div>
+      <div class="card__content">
+        <div class="card__title">Tomatoes</div>
+        <p class="card__text">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves as a proportion.</p>
+        <button class="btn btn--block card__btn">Details</button>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item">
+    <div class="card">
+      <div class="card__image">
+        <img src="https://images.unsplash.com/photo-1590868309235-ea34bed7bd7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80" class="card-img-top" alt="...">
+      </div>
+      <div class="card__content">
+        <div class="card__title">Carrots</div>
+        <p class="card__text">This defines the ability for a flex item to shrink if necessary. Negative numbers are invalid.</p>
+        <button class="btn btn--block card__btn">Details</button>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item">
+    <div class="card">
+      <div class="card__image">
+        <img src="https://images.unsplash.com/photo-1612823711171-e296662098fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" class="card-img-top" alt="...">
+      </div>
+      <div class="card__content">
+        <div class="card__title">Garlic</div>
+        <p class="card__text">This defines the default size of an element before the remaining space is distributed."</p>
+        <button class="btn btn--block card__btn">Details</button>
+      </div>
+    </div>
+  </li>
+  <li class="cards__item">
+    <div class="card">
+      <div class="card__image">
+        <img src="https://images.unsplash.com/photo-1590165482129-1b8b27698780?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2127&q=80" class="card-img-top" alt="...">
+      </div>
+      <div class="card__content">
+        <div class="card__title">Potatoes</div>
+        <p class="card__text">This defines the default size of an element before the remaining space is distributed."</p>
+        <button class="btn btn--block card__btn">Details</button>
+      </div>
+    </div>
+  </li>
+   
+
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.jshttps://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script><script src="{% static 'js/farmerhome.js' %}"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script type="text/javascript">
+  jQuery.noConflict();
+</script>
+
+{% endblock content %}
