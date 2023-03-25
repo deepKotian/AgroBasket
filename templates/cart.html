@@ -1,0 +1,107 @@
+{% extends 'customerbase.html' %}
+{% block content %}
+{% load static %}
+<link rel ="stylesheet" href="{% static 'css/cart.css' %}">
+<!-- Quantity and Price Section -->
+<div class = 'container' style = "width: 70%; padding-top:10px;">
+    <table class="table table-light table-hover">
+        <thead>
+
+        </thead>
+        <tbody>
+         
+          <tr>
+            <th scope="row"><h3><strong>Items: {{cart.get_itemtotal}}</strong></h3></th>
+            <td></td>
+            <td><h3><strong>Total: ${{cart.get_cart_total|floatformat:2}}</strong></h3></td>
+            <!-- <td></td> -->
+            <td>
+            {% if user.is_authenticated %}
+            <div class="cart mt-4 align-items-center"><button type="button" class="btn btn-primary btn-lg" id="rzp-button1">Checkout →</button></div>
+            {% else %}
+            <div class="cart mt-4 align-items-center"><button type="button" class="btn btn-primary btn-lg" id="">Checkout →</button></div>
+            {% endif %}
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- Cart Section -->
+<div class = 'container' style = 'margin-top: 50px; width: 70%'>
+<table class="table table-light table-hover">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"><h3>Item</h3></th>
+        <th scope="col"><h3>Price</h3></th>
+        <th scope="col"><h3>Quantity</h3></th>
+        <th scope="col"><h3>Total</h3></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for item in cartitems %}
+      <tr>
+        <th scope="row"><div id = "cart_image"><img src = {{item.product.image.url}}></div></th>
+        <td><h3>{{item.product.name}}</h3></td>
+        <td><h3>{{item.product.price}}</h3></td>
+        <td><input type = 'number' class = 'quantity' value = "{{item.quantity}}" style = 'width: 50px; padding-left: 5px'></td>
+        <td><h3>{{item.get_total | floatformat:2}}</h3></td>
+      </tr>
+      {% endfor %}
+      
+      
+    </tbody>
+  </table>
+  
+</div>
+<script src="{% static 'js/product.js' %}"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "{{api_key}}", // Enter the Key ID generated from the Dashboard
+    "currency": "INR",
+    "name": "GamesNation",
+    "description": "Online Payment",
+    "image": "{% static 'base/img/logo.jpg' %}",
+    "order_id":"{{order_id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature)
+    },
+    "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999",
+        "address": "E-1203 Anmol Fortune" 
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+
+  
+</script>
+                      
+{% endblock content %}

@@ -1,0 +1,13 @@
+.navbar-collapse{
+    display: flex!important;
+    justify-content: flex-end;
+}
+
+.navbar{
+    z-index: 100 !important;
+    background-color: #7ab927;
+}
+.navbar-nav{
+   
+}   
+

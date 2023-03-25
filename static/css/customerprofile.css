@@ -1,0 +1,238 @@
+body {
+	font-family: 'Inter', sans-serif;
+	font-size: .925rem;
+	font-family: Montserrat, sans-serif !important;
+	overflow-x: hidden;
+	}
+    body section {
+        display: block;
+      }
+      body h1,
+      body h2,
+      body h3,
+      body h4,
+      body h5,
+      body h6,
+      body ul,
+      body li {
+        margin: 0;
+        padding: 0;
+      }
+      body h1 {
+        font-family: Montserrat, sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      body h2 {
+        font-family: Montserrat, sans-serif;
+        font-size: 1.875em;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+@media only screen and (min-width: 768px) {
+  *{
+      overflow-x: visible;
+  }
+  .card{
+      width: 100%;
+      margin-bottom: 1rem;
+      margin-left: 1rem;
+      margin-left: 3rem;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+
+  .card-img-top{
+      height: 10vw;
+      object-fit: cover;
+  }
+
+  
+  .product-main-div{
+      font-size: 0.9rem;
+      display: flex !important;
+  }
+  
+  .product-filter-col{
+      margin-left: 3rem;
+
+  }
+
+  .filter-btn-desktop{
+      margin-top: 1rem;
+      font-size: 0.8rem !important;
+   
+  }
+
+  .product-filter-header{
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+  }
+
+  .product-display-col{
+      margin-left: 22rem;
+      margin-top: 1rem;
+  }
+  .btn{
+      font-size: 1rem;
+      margin-left: -1rem;
+      background-color: #7ab927;
+      border: none;
+      margin-left: 0rem;
+      color: #FFF;
+  }
+  .btn:hover{
+    background-color: #486d30;
+}
+.btn btn-primary addtocart{
+    color: #FFF !important;
+}
+  .form-control{
+      width: 40%;
+      height: 2vw;
+  }
+
+  .input-search-box input{
+      border: 2px solid black;
+  }
+
+  .form-range{
+      width: 40%;
+  }
+
+  .form-label{
+      margin-top: 1rem;
+      font-size: 1.2rem;
+  }
+
+  .product-main-div{
+      visibility: visible;
+  }
+
+  /*Mobile Divs*/
+  .cards-main-div{
+      visibility: hidden;
+      display: none;
+  }
+
+  .filter-btn{
+      visibility: hidden;
+  }
+
+ 
+}
+.navbar-collapse{
+    display: flex!important;
+    justify-content: flex-end;
+}
+
+.navbar{
+    z-index: 100 !important;
+    background-color: #7ab927;
+}
+
+.navbar {
+	background-color: #7ab927 !important;
+	border: none !important;
+	position: relative;
+  	transition: 1s;
+	width: 100%;
+	z-index: 100 !important;
+}
+
+.navbar .dropdown-menu {
+	right: auto !important;
+	left: 0 !important;
+}
+.navbar .navbar-nav>li>a {
+	color: #EEE !important;
+	line-height: 55px !important;
+	padding: 0 10px !important;
+}
+.navbar .navbar-brand {
+	color:#FFF !important;
+  	cursor: pointer;}
+.navbar .navbar-nav>li>a:focus,
+.navbar .navbar-nav>li>a:hover {color: #EEE !important}
+
+.navbar .navbar-nav>.open>a,
+.navbar .navbar-nav>.open>a:focus,
+.navbar .navbar-nav>.open>a:hover {background-color: transparent !important; color: #FFF !important}
+
+.navbar .navbar-brand {line-height: 55px !important; padding: 0 !important}
+.navbar .navbar-brand:focus,
+.navbar .navbar-brand:hover {color: #FFF !important}
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {margin: 0 !important}
+@media (max-width: 767px) {
+	.navbar>.container-fluid .navbar-brand {
+		margin-left: 15px !important;
+	}
+	.navbar .navbar-nav>li>a {
+		padding-left: 0 !important;
+	}
+	.navbar-nav {
+		margin: 0 !important;
+	}
+	.navbar .navbar-collapse,
+	.navbar .navbar-form {
+		border: none !important;
+	}
+}
+
+.navbar .navbar-nav>li>a {
+	float: left !important;
+}
+.navbar .navbar-nav>li>a>span:not(.caret) {
+	background-color: #486d30 !important;
+	border-radius: 50% !important;
+	height: 25px !important;
+	width: 25px !important;
+	padding: 2px !important;
+	font-size: 11px !important;
+	position: relative !important;
+	top: -10px !important;
+	right: 5px !important
+}
+.dropdown-menu>li>a {
+	padding-top: 5px !important;
+	padding-right: 5px !important;
+}
+.navbar .navbar-nav>li>a>i {
+	font-size: 18px !important;
+}
+::-webkit-scrollbar {
+	background: transparent;
+	width: 5px;
+	height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #3c3f58;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+
+.customer-profile{
+    width: 50%;
+    margin: auto;
+    margin-top: 1.5rem;
+}
+
+.customer-profile-heading{
+    font-size: 2rem;
+}
+
+.customer-profile-form{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    padding: 1rem;
+}
+
+.customer-profile-desc{
+    margin-bottom: 1rem;
+    margin-top: -0.4rem;
+    opacity: 0.7;
+}
+

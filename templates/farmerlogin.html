@@ -1,0 +1,37 @@
+{% extends 'customerbase.html' %}
+{% load static %}
+{% block content %}
+<link rel ="stylesheet" href="{% static 'css/farmerregister.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+
+<br>
+
+<div class="login">
+<br><br><br>
+<center>
+<img src="\static\img\login-header.jpg" class="login-header-image">
+</center>
+<div class="login-heading">
+    Get in! And buy from the best.
+</div>
+<div class="well login-box center-block">
+    <form name="login" method = "POST">
+      {% csrf_token %}
+      <input type="text" class="form-control" placeholder="Username" name="username" />
+
+      <input type="password" class="form-control" id="pass" placeholder="Password" name="password" />
+      
+      <button class="btn btn-primary" type="submit">Login</button>
+      <br>
+      <p>New user?<a href="farmerregister" class="forgot-password"> SignUp Now!</a></p>
+  </div>
+  </form>
+  <div>
+    {% for message in messages %}
+    <center><h3> {{message}} </h3></center>
+    {% endfor %}
+</div>
+  </div>
+
+{% endblock content %}
