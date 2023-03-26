@@ -1,170 +1,163 @@
 /* Product Section */
-.card{
-  width: 50%;
-  margin: 0;
-  float: none;;
-}
-#product {
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 80px 0;
-    background-color: #dbdbdb;
-  }
-  
-  #product .sneakers {
-    max-width: 500px;
-    margin: 0 auto;
-  /*   text-align: center; */
-  }
-  .product-category{
-    font-weight: 400;
-    color: #303030;
-  }
-  .product-title{
-    padding:0;
-    margin:0;
-  }
-  #Coupons{
-    padding-top: 10px;
-    font-size: 14px;
-    
-  }
-  #product .product-title {
-  
-  }
-  
-  #product .product-price {
-  /*   text-align: center; */
-    margin: 0 auto;
-    color: #303030;
-    font-weight: 400;
-    margin-bottom: 10px;
-  }
-  
 
-  #product .dropdown {
-    margin-top: 30px;
-  }
+#product {
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 80px 0;
+  background-color: white;
+}
+
+.img-fluid{
+  width: 80%;
+}
+
+
+#product .sneakers {
+  max-width: 500px;
+  margin: 0 auto;
+/*   text-align: center; */
+}
+.product-category{
+  font-weight: 400;
+  color: #303030;
+}
+.product-title{
+  padding:0;
+  margin:0;
+}
+#Coupons{
+  padding-top: 10px;
+  font-size: 14px;
   
-  #product .size {
-    margin-right: -155px;
-  }
+}
+#product .product-title {
+
+}
+
+#product .product-price {
+/*   text-align: center; */
+  margin: 0 auto;
+  color: #303030;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+
+#product .dropdown {
+  margin-top: 30px;
+}
+
+#product .size {
+  margin-right: -155px;
+}
+
+#product .quantity {
   
-  #product .quantity {
-    
+}
+
+#product .btn.btn-primary {
+  margin-top: 10px;
+}
+
+/* 
+@media (max-width: 991px) {
+  #product .sneakers {
+    max-width: 400px;
   }
-  
-  #product .btn.btn-primary {
-    margin-top: 10px;
-  }
-  
-  /* 
-  @media (max-width: 991px) {
-    #product .sneakers {
-      max-width: 400px;
-    }
-  }
-   */
-  
+}
+ */
+
 
 
 
 .stock{
-  margin:0;
-  padding:0;
+margin:0;
+padding:0;
 }
 .review {
-  margin-bottom:10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+width: 60%; 
+margin-bottom:10px;
+background-color: white;
+margin: auto;
+border-radius: 0.8rem;
+border: 1px solid #ffff;
+box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .sm-text {
-	font-size: 10px;
-	letter-spacing: 1px;
+font-size: 1.2rem;
+letter-spacing: 1px;
 }
 
 .sm-text-1 {
-	font-size: 14px;
+font-size: 1.2rem;
 }
 
 .green-tab {
-	background-color: #00C853;
-	color: #fff;
-	border-radius: 5px;
-	padding: 5px 3px 5px 3px;
+background-color: #00C853;
+color: #fff;
+border-radius: 5px;
+padding: 5px 3px 5px 3px;
 }
 
-.btn-red {
-	background-color: #E64A19;
-	color: #fff;
-	border-radius: 20px;
-	border: none;
-	outline: none;
-}
-
-.btn-red:hover {
-	background-color: #BF360C;
-}
-
-.btn-red:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    outline-width: 0
-}
-
-.round-icon {
-	font-size: 40px;
-	padding-bottom: 10px;
-}
-
-/*Styling for dots*/
-.fa-circle {
-	font-size: 10px;
-	color: #EEEEEF;
-}
-
-.green-dot {
-	color: #4CAF50;
-}
-
-.red-dot {
-	color: #E64A19;
-}
-
-.yellow-dot {
-	color: #FFD54F;
-}
-
-.grey-text {
-	color: #BDBDBD;
-}
-
-.green-text {
-	color: #4CAF50;
-}
 
 /*border for block*/
 .block {
-	border-right: 1px solid #F5EEEE;
-	border-top: 1px solid #F5EEEE;
-	border-bottom: 1px solid #F5EEEE;
+border-right: 1px solid #F5EEEE;
+border-top: 1px solid #F5EEEE;
+border-bottom: 1px solid #F5EEEE;
 }
 
 .profile-pic img {
-	border-radius: 50%;
+border-radius: 50%;
 }
 
 .rating-dot {
-	letter-spacing: 5px;
+letter-spacing: 5px;
 }
 
 .via {
-	border-radius: 20px;
-	height: 28px;
+border-radius: 20px;
+height: 28px;
 }
 
+.grey-text{
+  font-size: 0.8rem;
+}
 
-#SubmitButton{
-  text-align:end;
+.review-heading{
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.card{
+width: 60%;
+margin: 0 auto; 
+float: none; 
+padding: 2rem 1.5rem 0rem 1.5rem;
+
+border-radius: 2rem !important;
+}
+#rating{
+width: 100%;
+padding: 0rem !important;
+}
+
+.feedback-writing{
+  width: 50%;
+  margin: auto;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding-top: 0.1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.heading-feedback-writing{
+  font-size: 2rem;
+  font-weight: 450;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
 }

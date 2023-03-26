@@ -1,34 +1,5 @@
-body {
-	font-family: 'Inter', sans-serif;
-	font-size: .925rem;
-	font-family: Montserrat, sans-serif !important;
-	overflow-x: hidden;
-	}
-    body section {
-        display: block;
-      }
-      body h1,
-      body h2,
-      body h3,
-      body h4,
-      body h5,
-      body h6,
-      body ul,
-      body li {
-        margin: 0;
-        padding: 0;
-      }
-      body h1 {
-        font-family: Montserrat, sans-serif;
-        font-weight: 700;
-        text-transform: uppercase;
-      }
-      body h2 {
-        font-family: Montserrat, sans-serif;
-        font-size: 1.875em;
-        font-weight: 700;
-        text-transform: uppercase;
-      }
+
+    
 @media only screen and (min-width: 768px) {
   *{
       overflow-x: visible;
@@ -46,7 +17,7 @@ body {
       object-fit: cover;
   }
 
-  
+  .input-search-box
   .product-main-div{
       font-size: 0.9rem;
       display: flex !important;
@@ -93,6 +64,7 @@ body {
 
   .input-search-box input{
       border: 2px solid black;
+      width: 30%;
   }
 
   .form-range{

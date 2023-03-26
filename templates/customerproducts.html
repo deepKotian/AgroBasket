@@ -18,7 +18,7 @@
   <br>
   <center>
     <form action="/productSearch" method="get"> 
-        <div class="input-group input-search-box">
+        <div class="input-group input-search-box" >
          <input type="text" class="form-control border" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2"  name="query" id="search">
          <div class="input-group-append">
              <button class="btn btn-outline-secondary" type="submit">Search</button>
@@ -36,7 +36,7 @@
                 <div class="card card-products">
                   <img src="{{product.image.url}}" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <a href="/productdetail/{{product.slug}}"><p class="card-title">{{product.name| truncatechars:15 | safe}}</p></a>
+                      <a href="/productdetail/{{product.slug}}" style="text-decoration: none;color: #000;"><p class="card-title">{{product.name| truncatechars:15 | safe}}</p></a>
                       <p class="text-muted p-0">{{product.desc| truncatechars:55 | safe}}</p>
                       <p class="card-text">₹{{product.price}}</p>
                       <a  class="btn btn-primary addtocart" data-action = "add" data-product = "{{product.id}}">Add to Cart</a>
@@ -44,7 +44,7 @@
                   </div>
           </div>
           {% endfor %}
-              <div class="col col-products">
+              <!-- <div class="col col-products">
                 <div class="card card-products">
                     <img src="\static\img\football.png" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -103,7 +103,7 @@
                       
                     </div>
                   </div>
-              </div>
+              </div> -->
             </div>
           </div>
           <script src="{% static 'js/product.js' %}"></script>

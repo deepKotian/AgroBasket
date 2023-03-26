@@ -53,6 +53,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="/customerproducts">Products</a>
               </li>
+              {% if user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link" href="/track">Track</a>
               </li>
@@ -62,9 +63,8 @@
               <li class="nav-item">
                 <a class="nav-link" href="/cart">Cart</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Past Orders</a>
-              </li>
+              
+              {% endif %}
               {% if user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link" href="/logout">Logout</a>
@@ -87,6 +87,44 @@
   language-code="en"
 ></df-messenger>
   {% block content %}{% endblock content %}
+
+  <div class="footer-clean">
+    <footer>
+    <!--     <div class="container"> -->
+            <div class="row justify-content-center" style="margin-right: 150px; margin-left: 150px ">
+                <div class="col-sm-3 col-md-4 item">
+                    <a href="/farmer/farmerhome" style="text-decoration:none"><h3>Farmer</h3></a>
+                    <ul>
+                        <li><a href="#">Farmer Login</a></li>
+                        <li><a href="#">Add Products</a></li>
+                        <li><a href="#">Profile</a></li>
+                    </ul> 
+                </div>
+                <div class="col-sm-3 col-md-4 item">
+                  <a href="/" style="text-decoration:none"><h3>Customer</h3><a>
+                    <ul>
+                        <li><a href="#">Customer login</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Profile</a></li>
+                    </ul> 
+                </div>
+                <div class="col-sm-3 col-md-4 item">
+                  <a href="/customerproducts" style="text-decoration:none"><h3>Products</h3></a>
+                   <ul>
+                        <li><a href="#">Product Detail</a></li>
+                        <li><a href="#">Update Product</a></li>
+                        <li><a href="#">Benefits</a></li>
+                    </ul> 
+                </div><br>
+                <br>
+                <div class="" style="width:600px; margin:0 auto;"><!-- <a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a> -->
+                    <p class="copyright">CodefuseX © 2023</p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </footer>
+</div>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   

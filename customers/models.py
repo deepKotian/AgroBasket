@@ -13,6 +13,19 @@ class CompleteProfile(models.Model):
     state = models.CharField(max_length=255)
     zipcode = models.CharField(max_length=255)
     
+
+class DeliveryProfile(models.Model):
+    username = models.CharField(max_length=255)
+    fullName = models.CharField(max_length=255)
+    zipcode = models.CharField(max_length=255)
+
+    
+class Delivery(models.Model):
+    devname = models.CharField(max_length=255)
+    order_id = models.CharField(max_length=255)
+
+
+
 class Products(models.Model):
     comp_name = models.CharField(max_length=255)
     product_id = models.AutoField
@@ -68,6 +81,13 @@ class OrderItem(models.Model):
     cartid = models.CharField(max_length=255)
     modeofdelivery = models.CharField(max_length=255, default="Electric Vehicle")
     total_amount = models.CharField(max_length=255)
+    order_location = models.CharField(max_length=255,blank=True)
     delivery_status = models.CharField(max_length=255,default="False")
     shipped_status = models.CharField(max_length=255, default="False")
+    zip_code = models.CharField(max_length=255,blank=True)
 
+class Reviews(models.Model):
+    username = models.CharField(max_length=255, default="")
+    product_id = models.CharField(max_length=255)
+    review = models.CharField(max_length=255)
+    rating = models.CharField(max_length=255)

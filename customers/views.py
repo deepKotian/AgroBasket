@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from customers.models import CompleteProfile,Products,Cart,Cartitems,OrderItem
+from customers.models import CompleteProfile,Products,Cart,Cartitems,OrderItem,Reviews,DeliveryProfile,Delivery
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.core import mail
@@ -11,6 +11,22 @@ from django.http import HttpResponse
 import json
 from AgroBasket.settings import RAZORPAY_API_KEY, RAZORPAY_API_SECRET_KEY
 import razorpay
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# %matplotlib inline
+plt.style.use("ggplot")
+
+import sklearn
+from sklearn.decomposition import TruncatedSVD
+from django.templatetags.static import static
+
+from io import BytesIO
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 
 # Create your views here.
 def home(request):
@@ -158,8 +174,9 @@ def track(request):
 
 def productDetail(request, slug):
     prod = Products.objects.filter(slug = slug).first()
-    print(prod)
-    context = {'prod': prod}
+    allreviews = Reviews.objects.filter(product_id = prod.id)
+    
+    context = {'prod': prod,'allreviews':allreviews}
     return render(request , 'productdetail.html', context)
 
 client = razorpay.Client(auth=("rzp_test_yOgTa9YwwHLKDR", "qDmtqkDq7Rs3OIpFDd7JDtRR"))
@@ -179,15 +196,19 @@ def checkout(request,token):
 
     orders = OrderItem()
     print(len(OrderItem.objects.filter(cartid=cartitems)))
+    user_detail = CompleteProfile.objects.get(username = request.user)
+    print(user_detail)
     if len(OrderItem.objects.filter(cartid = cartitems )) == 0:
         orders.username = request.user
         orders.cartid = cartitems
         orders.total_amount = Amount
         orders.modeofdelivery = "Electric Vehicle"
+        orders.order_location = user_detail.city
+        orders.zip_code = user_detail.zipcode
         orders.save()
         print("saved successfully!")
     context={'order_amount':order_amount,'api_key':RAZORPAY_API_KEY,'payment_id':payment_id}
-
+    generate_pdf()
 
     return render(request,'payment.html',context)
 
@@ -196,3 +217,91 @@ def productSearch(request):
     allProd= Products.objects.filter(name__icontains=query)
     params = {'allProd': allProd}
     return render(request, 'productSearch.html', params)
+
+
+def reviews(request, id):
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            ratings = request.POST.get('ratings')
+            reviews = request.POST.get('review')
+        
+        reviews_detail = Reviews()
+        reviews_detail.rating = ratings
+        reviews_detail.review = reviews
+        reviews_detail.product_id = id
+        reviews_detail.username = request.user
+        reviews_detail.save()
+        print("Reviews saved successfully!")
+
+        return redirect("customerproducts")
+    
+    return render(request,"customerproducts.html")
+
+
+def devlogin(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(username= username, password=password)
+        print(user)
+        if user is not None:
+            auth.login(request, user)
+            print("Success!")
+            return redirect("/devhome")
+        else:
+            messages.info(request,'Invalid cedentials')
+            return redirect('/devlogin')
+    else:
+        return render(request,'devlogin.html')
+
+def devlogout(request):
+   auth.logout(request)
+   return redirect('/devhome')
+
+def devhome(request):
+    user_details = DeliveryProfile.objects.get(username = request.user)
+    usercode = user_details.zipcode
+    allActiveOrders = OrderItem.objects.filter(zip_code = usercode)
+    
+    return render(request,"devhome.html",{"allActiveOrders":allActiveOrders})
+        
+def updatedeliverystatus(request,orderid):
+    if request.user.is_authenticated:
+        deliver = Delivery()
+        deliver.devname = request.user
+        deliver.order_id = orderid
+        deliver.save()
+
+    return render(request,'devhome.html')
+
+def recoomendation_function():
+    amazon_ratings = pd.read_csv(static('Crops1.csv'))
+    amazon_ratings = amazon_ratings.dropna()
+    amazon_ratings.head()
+    popular_products = pd.DataFrame(amazon_ratings.groupby('ProductId')['Rating'].count())
+    most_popular = popular_products.sort_values('Rating', ascending=False)
+    most_popular.head(10)
+    
+def generate_pdf():
+    # Get the HTML template
+    template = get_template('./templates/invoice.html')
+
+    # Render the template with context data
+    context = {'name': 'John Doe'}
+    html = template.render(context)
+
+    # Create a response object with the PDF data
+    response1 = HttpResponse(content_type='application/pdf')
+    response1['Content-Disposition'] = 'attachment; filename="my_pdf.pdf"'
+
+    # Create a PDF object
+    pdf = pisa.CreatePDF(html, dest=response1)
+
+    # If PDF creation failed, return an error response
+    if pdf.err:
+        return HttpResponse('Error generating PDF file')
+
+    # Close the PDF object cleanly, and we're done.
+
+    # Return the response object
+    return response1
