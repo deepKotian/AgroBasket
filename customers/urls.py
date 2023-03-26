@@ -21,6 +21,10 @@ urlpatterns = [
     path('reviews/<str:id>',views.reviews,name='reviews'),
     path('devhome',views.devhome,name='devhome'),
     path('devlogin',views.devlogin,name='devlogin'),
-    path('devlogout',views.devlogout, name='devlogout')
+    path('devlogout',views.devlogout, name='devlogout'),
+    path('updatedeliverystatus/<str:cartid>',views.updatedeliverystatus,name='updatedeliverystatus'),
+    path('devorders',views.devorders,name='devorders'),
+    path('updatefinalstatus/<str:cartid>',views.updatefinalstatus,name='updatefinalstatus'),
+
     
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

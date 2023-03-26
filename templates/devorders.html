@@ -12,7 +12,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Active Orders</a>
+            <a class="nav-link active" aria-current="page" href="/devhome">Active Orders</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/devorders">Your orders</a>
@@ -35,19 +35,20 @@
 <div class="dev-home">
     <div class="location-heading">Currently serving in zipcode: <span style="font-weight: 500;">400067</span> </div>
     <div class="dev-container">
-        {% for orders in allActiveOrders %}
-        {% if orders.shipped_status == "False" %}
-        <div class="dev-cards">
-            <div class="card ">
-                <div class="card-body">
-                  <h5 class="card-title">Order Id: #23456345{{orders.id}}</h5>
-                  <p class="card-text"><span style="font-weight: 500;">Customer name: </span>{{orders.username}}</p>
-                  <p class="card-text"><span style="font-weight: 500;">Price: </span>${{orders.total_amount}}</p>
-                  <p class="card-text"><span style="font-weight: 500;">Mode of Delivery: </span>{{orders.modeofdelivery}}</p>
-                  <a href="#" class="btn btn-primary" onclick="location.href='updatedeliverystatus/{{orders.cartid}}'">Ship</a>
-                </div>
-              </div>
-        </div>
+        {% for orders in alldevorders %}
+        {% if orders.shipped_status == "True" and orders.delivery_status == "True" %}
+       {% elif orders.shipped_status == "True" %}
+       <div class="dev-cards">
+        <div class="card ">
+            <div class="card-body">
+              <h5 class="card-title">Order Id: #23456345{{orders.id}}</h5>
+              <p class="card-text"><span style="font-weight: 500;">Customer name: </span>{{orders.username}}</p>
+              <p class="card-text"><span style="font-weight: 500;">Price: </span>${{orders.total_amount}}</p>
+              <p class="card-text"><span style="font-weight: 500;">Mode of Delivery: </span>{{orders.modeofdelivery}}</p>
+              <a href="#" class="btn btn-primary" onclick="location.href='updatefinalstatus/{{orders.cartid}}'">Deliver</a>
+            </div>
+          </div>
+    </div>
         {% endif %}
         {% endfor %}
         

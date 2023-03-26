@@ -39,8 +39,11 @@ body {
       margin-left: 1rem;
       margin-left: 3rem;
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      
   }
-
+.table>:not(:last-child)>:last-child>* {
+    border-bottom-color: rgb(128, 127, 127);
+}
   .card-img-top{
       height: 10vw;
       object-fit: cover;
@@ -218,11 +221,15 @@ body {
 .col-md-, .col-lg-4{
     margin-bottom: 20px;
 }
+
+.cart .mt-4{
+    margin-top: 0 !important;
+}
 #cart_image{
-    width: 50px;
-    height: 50px;
-    border: 2px solid white;
-    
+    width: 10rem;
+    height: 10rem;
+    margin-left: 2rem;
+    margin-right: -4rem;
 }
 #cart_image img{
     width: 100%;
@@ -238,7 +245,9 @@ body {
     align-items: center;
     justify-content: end;
     position: relative;
-    
+}
+tbody, td, tfoot, th, thead, tr {
+    background-color: transparent;
 }
 .cart_container img{
     width:  65%;
@@ -296,13 +305,13 @@ body {
 	 justify-content: center;
 	 width: 100%;
 	 height: 100%;
-	 border: 2px solid #079ad9;
+	 border: 2px solid #7ab927;
 	 border-radius: 5px;
 	 padding: 1rem;
 	 transition: transform 300ms ease;
 }
  .radio-tile-group .input-container .icon svg {
-	 fill: #079ad9;
+	 fill: #7ab927;
 	 width: 3rem;
 	 height: 3rem;
 }
@@ -312,19 +321,19 @@ body {
 	 font-weight: 600;
 	 text-transform: uppercase;
 	 letter-spacing: 1px;
-	 color: #079ad9;
+	 color: #7ab927;
 }
  .radio-tile-group .input-container .radio-button:checked + .radio-tile {
-	 background-color: #079ad9;
-	 border: 2px solid #079ad9;
+	 background-color: #7ab927;
+	 border: 2px solid #7ab927;
 	 color: white;
 	 transform: scale(1.1, 1.1);
 }
  .radio-tile-group .input-container .radio-button:checked + .radio-tile .icon svg {
 	 fill: white;
-	 background-color: #079ad9;
+	 background-color: #7ab927;
 }
  .radio-tile-group .input-container .radio-button:checked + .radio-tile .radio-tile-label {
 	 color: white;
-	 background-color: #079ad9;
+	 background-color: #7ab927;
 }

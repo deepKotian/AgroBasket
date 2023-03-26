@@ -11,6 +11,7 @@ from django.http import HttpResponse
 import json
 from AgroBasket.settings import RAZORPAY_API_KEY, RAZORPAY_API_SECRET_KEY
 import razorpay
+from django.core.mail import send_mail
 
 import numpy as np
 import pandas as pd
@@ -65,6 +66,13 @@ def register(request):
             else:
                 user = User.objects.create_user(username = username, password=password1, email=email)
                 user.save()
+                send_mail(
+                    subject = 'Welcome to AgroBasket',
+                    message = request.POST['username'] + '' + ' we are happy to have you here',
+                    from_email = settings.EMAIL_HOST_USER,
+                    recipient_list = [request.POST['email']],
+                    fail_silently=False,
+                )
                 print('user created')
                 return redirect('/login')
         else:
@@ -195,6 +203,7 @@ def checkout(request,token):
     payment_id = payment['id']
 
     orders = OrderItem()
+    order_items_for_pdf = OrderItem.objects.filter(cartid=cartitems)
     print(len(OrderItem.objects.filter(cartid=cartitems)))
     user_detail = CompleteProfile.objects.get(username = request.user)
     print(user_detail)
@@ -204,11 +213,16 @@ def checkout(request,token):
         orders.total_amount = Amount
         orders.modeofdelivery = "Electric Vehicle"
         orders.order_location = user_detail.city
+        orders.email = user_detail.emailAddress
         orders.zip_code = user_detail.zipcode
         orders.save()
         print("saved successfully!")
     context={'order_amount':order_amount,'api_key':RAZORPAY_API_KEY,'payment_id':payment_id}
-    generate_pdf()
+    data = {
+        'products': order_items_for_pdf,
+        'order_amount':order_amount,
+    }
+    generate_pdf(data)
 
     return render(request,'payment.html',context)
 
@@ -265,14 +279,43 @@ def devhome(request):
     
     return render(request,"devhome.html",{"allActiveOrders":allActiveOrders})
         
-def updatedeliverystatus(request,orderid):
-    if request.user.is_authenticated:
-        deliver = Delivery()
-        deliver.devname = request.user
-        deliver.order_id = orderid
-        deliver.save()
 
-    return render(request,'devhome.html')
+def devorders(request):
+    alldevorders = OrderItem.objects.filter(devname = request.user)
+    print(alldevorders)
+    return render(request,"devorders.html",{"alldevorders":alldevorders,})
+
+def updatedeliverystatus(request,cartid):
+    if request.user.is_authenticated:
+        order_status = OrderItem.objects.get( cartid= cartid) 
+        print(request.user)
+        order_status.devname = str(request.user)
+        order_status.shipped_status = "True"
+        order_status.save()
+        send_mail(
+                    subject = 'Update on Your Order Status',
+                    message = 'Your product is out for delivery',
+                    from_email = settings.EMAIL_HOST_USER,
+                    recipient_list = [order_status.email],
+                    fail_silently=False,
+                )
+    
+        return redirect('devhome')
+    
+def updatefinalstatus(request,cartid):
+    if request.user.is_authenticated:
+        order_status = OrderItem.objects.get( cartid= cartid)
+        print("yes")
+        order_status.delivery_status = "True"
+        order_status.save()
+        send_mail(
+                    subject = 'Update on Your Order Status',
+                    message = 'Your product is delivered',
+                    from_email = settings.EMAIL_HOST_USER,
+                    recipient_list = [order_status.email],
+                    fail_silently=False,
+                )
+        return redirect('devorders')
 
 def recoomendation_function():
     amazon_ratings = pd.read_csv(static('Crops1.csv'))
@@ -282,12 +325,14 @@ def recoomendation_function():
     most_popular = popular_products.sort_values('Rating', ascending=False)
     most_popular.head(10)
     
-def generate_pdf():
+def generate_pdf(data):
     # Get the HTML template
-    template = get_template('./templates/invoice.html')
+    template = get_template('./invoice.html')
 
     # Render the template with context data
-    context = {'name': 'John Doe'}
+    context = {'name': 'AgroBasket',
+               'products': data,
+               }
     html = template.render(context)
 
     # Create a response object with the PDF data

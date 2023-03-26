@@ -53,15 +53,18 @@ def farmerlogin(request):
 
 def farmerhome(request):
     if request.user.is_authenticated:
-        farmer_detail = FarmerProfile.objects.get(username = request.user)
-        company = farmer_detail.comp_name
-        allProducts = Products.objects.filter(comp_name = company)
-        totalProducts = len(allProducts)
+        farmer_detail_verify = len(FarmerProfile.objects.filter(username = request.user))
+        if farmer_detail_verify>0:
+            farmer_detail = FarmerProfile.objects.get(username = request.user)
+            company = farmer_detail.comp_name
+            allProducts = Products.objects.filter(comp_name = company)
+            totalProducts = len(allProducts)
+
        
         
        
 
-        return render(request, 'farmerhome.html',{"totalProducts":totalProducts,})
+            return render(request, 'farmerhome.html',{"totalProducts":totalProducts,})
     return render(request, 'farmerhome.html')
 
 def farmerlogout(request):
@@ -69,12 +72,16 @@ def farmerlogout(request):
    return redirect('farmerlogin')
 
 def farmerproduct(request):
-   current_details = FarmerProfile.objects.get(username = request.user)
-   company_name = current_details.comp_name
-   print(company_name)
-   allProducts = Products.objects.filter(comp_name = company_name)
+   current_details_verify = len(FarmerProfile.objects.filter(username = request.user))
+   if current_details_verify>0:
 
-   return render(request, 'farmerproduct.html',{"allProducts":allProducts})
+    current_details = FarmerProfile.objects.get(username = request.user)
+    company_name = current_details.comp_name
+    print(company_name)
+    allProducts = Products.objects.filter(comp_name = company_name)
+
+    return render(request, 'farmerproduct.html',{"allProducts":allProducts})
+   return render(request, 'farmerproduct.html')
 
 def farmerprofile(request):
     existingprofile = len(FarmerProfile.objects.filter(username=request.user))

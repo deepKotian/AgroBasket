@@ -85,6 +85,8 @@ class OrderItem(models.Model):
     delivery_status = models.CharField(max_length=255,default="False")
     shipped_status = models.CharField(max_length=255, default="False")
     zip_code = models.CharField(max_length=255,blank=True)
+    devname = models.CharField(max_length=255,blank=True)
+    email = models.CharField(max_length=255,blank=True)
 
 class Reviews(models.Model):
     username = models.CharField(max_length=255, default="")

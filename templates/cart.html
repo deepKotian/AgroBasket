@@ -4,7 +4,7 @@
 <link rel ="stylesheet" href="{% static 'css/cart.css' %}">
 <!-- Quantity and Price Section -->
 <div class = 'container' style = "width: 70%; padding-top:10px;">
-    <table class="table table-light table-hover">
+    <table class="table table-light">
         <thead>
 
         </thead>
@@ -18,9 +18,9 @@
             <td>
             {% if user.is_authenticated %}
             
-            <div class="cart mt-4 align-items-center"><button type="button" class="btn btn-primary btn-lg"  onclick="location.href='checkout/{{cart.cart_id}}'">Checkout →</button></div>
+            <div class="cart mt-4 align-items-center" style="margin-top: 0 !important;"><button style="margin-top: 0 !important;" type="button" class="btn btn-primary btn-lg"  onclick="location.href='checkout/{{cart.cart_id}}'">Checkout →</button></div>
             {% else %}
-            <div class="cart mt-4 align-items-center"><button type="button" class="btn btn-primary btn-lg" id="">Checkout →</button></div>
+            <div class="cart mt-4 align-items-center" style="margin-top: 0 !important;"><button style="margin-top: 0 !important;" type="button" class="btn btn-primary btn-lg" id="">Checkout →</button></div>
             {% endif %}
             </td>
           </tr>
@@ -31,10 +31,11 @@
 
 
     <!-- Cart Section -->
-<div class = 'container' style = 'margin-top: 50px; width: 70%'>
-<table class="table table-light table-hover">
+
+<div class = 'container' style = 'margin-top: 50px; width: 70%;color: rgb(128, 127, 127);'>
+<table class="table table-light" style="border-radius: 10rem !important">
     <thead>
-      <tr>
+      <tr style="border-radius: 10rem !important">
         <th scope="col"></th>
         <th scope="col"><h3>Item</h3></th>
         <th scope="col"><h3>Price</h3></th>
@@ -100,7 +101,7 @@
         <label for="drive" class="radio-tile-label">Petrol Vehicle</label>
       </div>
     </div>
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <button class="btn btn-primary" type="submit" style="width: 7rem; height: 7rem; padding-top: 0rem; margin-top: 0.5rem; margin-left: 0.5rem">Submit</button>
   </form>
  
   </div>
