@@ -1,5 +1,9 @@
 /* Product Section */
-
+.card{
+  width: 50%;
+  margin: 0;
+  float: none;;
+}
 #product {
     justify-content: center;
     align-items: center;
@@ -158,4 +162,9 @@
 .via {
 	border-radius: 20px;
 	height: 28px;
+}
+
+
+#SubmitButton{
+  text-align:end;
 }

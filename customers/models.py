@@ -30,6 +30,7 @@ class Cart(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
     cart_id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
     completed = models.BooleanField(default=False)
+    
 
     @property
     def get_cart_total(self):
@@ -62,7 +63,11 @@ class Cartitems(models.Model):
         return self.product.name
 
 class OrderItem(models.Model):
+    username = models.CharField(max_length=255, default="")
     orderid = models.AutoField
     cartid = models.CharField(max_length=255)
+    modeofdelivery = models.CharField(max_length=255, default="Electric Vehicle")
     total_amount = models.CharField(max_length=255)
+    delivery_status = models.CharField(max_length=255,default="False")
+    shipped_status = models.CharField(max_length=255, default="False")
 

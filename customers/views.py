@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from customers.models import CompleteProfile,Products,Cart,Cartitems
+from customers.models import CompleteProfile,Products,Cart,Cartitems,OrderItem
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.core import mail
@@ -28,7 +28,7 @@ def login(request):
             return redirect("/")
         else:
             messages.info(request,'Invalid cedentials')
-            return redirect('login')
+            return redirect('/login')
     else:
         return render(request,'customerlogin.html')
 
@@ -45,15 +45,15 @@ def register(request):
                 return redirect('register')
             elif User.objects.filter(email=email).exists():
                 messages.info(request,'Email Taken')
-                return redirect('register')
+                return redirect('/register')
             else:
                 user = User.objects.create_user(username = username, password=password1, email=email)
                 user.save()
                 print('user created')
-                return redirect('login')
+                return redirect('/login')
         else:
             messages.info(request,'Password not matching..')
-            return redirect('register')
+            return redirect('/register')
     else:
          return render(request,'customerregister.html')
 
@@ -152,7 +152,9 @@ def updateQuantity(request):
     return JsonResponse("Quantity updated", safe = False)
 
 def track(request):
-    return render(request,"customertrack.html")
+    allOrders = OrderItem.objects.filter(username = request.user)
+    
+    return render(request,"customertrack.html", {"allOrders":allOrders})
 
 def productDetail(request, slug):
     prod = Products.objects.filter(slug = slug).first()
@@ -169,11 +171,22 @@ def checkout(request,token):
         totalprice.append(float(prod.product.price)*float(prod.quantity))
 
     Amount = sum(totalprice)
-    order_amount = Amount
+    order_amount = Amount*100
+    print(order_amount)
     order_currency = 'INR'
     payment = client.order.create(dict(amount = order_amount, currency= order_currency,payment_capture = 1))
     payment_id = payment['id']
-    context={'amount':order_amount,'api_key':RAZORPAY_API_KEY,'payment_id':payment_id}
+
+    orders = OrderItem()
+    print(len(OrderItem.objects.filter(cartid=cartitems)))
+    if len(OrderItem.objects.filter(cartid = cartitems )) == 0:
+        orders.username = request.user
+        orders.cartid = cartitems
+        orders.total_amount = Amount
+        orders.modeofdelivery = "Electric Vehicle"
+        orders.save()
+        print("saved successfully!")
+    context={'order_amount':order_amount,'api_key':RAZORPAY_API_KEY,'payment_id':payment_id}
 
 
     return render(request,'payment.html',context)
