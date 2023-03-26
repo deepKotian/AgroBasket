@@ -18,7 +18,7 @@
             <td>
             {% if user.is_authenticated %}
             
-            <div class="cart mt-4 align-items-center" style="margin-top: 0 !important;"><button style="margin-top: 0 !important;" type="button" class="btn btn-primary btn-lg"  onclick="location.href='checkout/{{cart.cart_id}}'">Checkout →</button></div>
+            <div class="cart mt-4 align-items-center" style="margin-top: 0 !important;"><button style="margin-top: 0 !important;"type="button" class="btn btn-primary btn-lg"  onclick="location.href='checkout/{{cart.cart_id}}'">Checkout →</button></div>
             {% else %}
             <div class="cart mt-4 align-items-center" style="margin-top: 0 !important;"><button style="margin-top: 0 !important;" type="button" class="btn btn-primary btn-lg" id="">Checkout →</button></div>
             {% endif %}
@@ -37,10 +37,10 @@
     <thead>
       <tr style="border-radius: 10rem !important">
         <th scope="col"></th>
-        <th scope="col"><h3>Item</h3></th>
-        <th scope="col"><h3>Price</h3></th>
-        <th scope="col"><h3>Quantity</h3></th>
-        <th scope="col"><h3>Total</h3></th>
+        <th scope="col"><h5>Item</h5></th>
+        <th scope="col"><h5>Price</h5></th>
+        <th scope="col"><h5>Quantity</h5></th>
+        <th scope="col"><h5>Total</h5></th>
       </tr>
     </thead>
     <tbody>
@@ -48,10 +48,10 @@
       {% for item in cartitems %}
       <tr>
         <th scope="row"><div id = "cart_image"><img src = {{item.product.image.url}}></div></th>
-        <td><h3>{{item.product.name}}</h3></td>
-        <td><h3>{{item.product.price}}</h3></td>
+        <td><h5>{{item.product.name}}</h5></td>
+        <td><h5>{{item.product.price}}</h5></td>
         <td><input type = 'number' class = 'quantity' value = "{{item.quantity}}" style = 'width: 50px; padding-left: 5px'></td>
-        <td><h3> </h3></td>
+        <td><h3>{{item.get_total | floatformat:2}}</h3></td>
       </tr>
       {% endfor %}
       

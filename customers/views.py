@@ -68,7 +68,7 @@ def register(request):
                 user.save()
                 send_mail(
                     subject = 'Welcome to AgroBasket',
-                    message = request.POST['username'] + '' + ' we are happy to have you here',
+                    message = request.POST['username'] + ' ' + 'we are happy to have you here',
                     from_email = settings.EMAIL_HOST_USER,
                     recipient_list = [request.POST['email']],
                     fail_silently=False,
@@ -191,6 +191,7 @@ client = razorpay.Client(auth=("rzp_test_yOgTa9YwwHLKDR", "qDmtqkDq7Rs3OIpFDd7JD
 def checkout(request,token):
     cartitems = Cart.objects.get(cart_id=token)
     allcartprod = Cartitems.objects.filter(cart=cartitems)
+    
     totalprice = []
     for prod in allcartprod:
         totalprice.append(float(prod.product.price)*float(prod.quantity))
@@ -204,11 +205,13 @@ def checkout(request,token):
 
     orders = OrderItem()
     order_items_for_pdf = OrderItem.objects.filter(cartid=cartitems)
-    print(len(OrderItem.objects.filter(cartid=cartitems)))
+    
     user_detail = CompleteProfile.objects.get(username = request.user)
-    print(user_detail)
+    user_details = DeliveryProfile.objects.get(zipcode = user_detail.zipcode)
+
     if len(OrderItem.objects.filter(cartid = cartitems )) == 0:
         orders.username = request.user
+        orders.devname = user_details.username
         orders.cartid = cartitems
         orders.total_amount = Amount
         orders.modeofdelivery = "Electric Vehicle"
@@ -231,8 +234,7 @@ def productSearch(request):
     allProd= Products.objects.filter(name__icontains=query)
     params = {'allProd': allProd}
     return render(request, 'productSearch.html', params)
-
-
+    
 def reviews(request, id):
     if request.user.is_authenticated:
         if request.method == "POST":
@@ -273,14 +275,17 @@ def devlogout(request):
    return redirect('/devhome')
 
 def devhome(request):
-    user_details = DeliveryProfile.objects.get(username = request.user)
-    usercode = user_details.zipcode
-    allActiveOrders = OrderItem.objects.filter(zip_code = usercode)
-    
-    return render(request,"devhome.html",{"allActiveOrders":allActiveOrders})
+    user_details_verify = len(DeliveryProfile.objects.filter(username = request.user))
+    if user_details_verify>0:
+        user_details = DeliveryProfile.objects.get(username = request.user)
+        usercode = user_details.zipcode
+        allActiveOrders = OrderItem.objects.filter(zip_code = usercode)
         
+        return render(request,"devhome.html",{"allActiveOrders":allActiveOrders,"usercode":usercode})
+    return render(request,"devhome.html")
 
 def devorders(request):
+    
     alldevorders = OrderItem.objects.filter(devname = request.user)
     print(alldevorders)
     return render(request,"devorders.html",{"alldevorders":alldevorders,})
@@ -294,7 +299,7 @@ def updatedeliverystatus(request,cartid):
         order_status.save()
         send_mail(
                     subject = 'Update on Your Order Status',
-                    message = 'Your product is out for delivery',
+                    message = 'Dear ' + order_status.username + '\n  I am writing to provide you with an update on the status of your order placed on [Order Date] with our company. We understand how important it is for you to receive your order in a timely and efficient manner, and we want to ensure that you are kept informed throughout the entire process. \n I am pleased to inform you that your order has been processed and is currently in \033[1m  Your Name  \033[0mtransit. Our logistics team is working hard to ensure that your package arrives at your doorstep as soon as possible. You can expect to receive your order by [Delivery Date]. \n To track your order, please use the tracking number provided in your order confirmation email. You can also log in to your account on our website to view the status of your order. \n  If you have any further questions or concerns regarding your order, please do not hesitate to contact us. We are always here to assist you and provide you with the best possible customer service.  \n \t \v Thank you for choosing our company for your purchase. We appreciate your business and look forward to serving you in the future.  \n Best regards, \n AgroBasket. ',
                     from_email = settings.EMAIL_HOST_USER,
                     recipient_list = [order_status.email],
                     fail_silently=False,
@@ -310,7 +315,7 @@ def updatefinalstatus(request,cartid):
         order_status.save()
         send_mail(
                     subject = 'Update on Your Order Status',
-                    message = 'Your product is delivered',
+                    message = 'Dear ' + order_status.username + '\n We are writing to inform you that your order has been successfully delivered to your shipping address. We hope that your experience with our company has been a positive one and that you are satisfied with the product you received. \n If for any reason you are not completely satisfied with your purchase, please do not hesitate to contact us. We are committed to ensuring the highest level of customer satisfaction and will do our best to resolve any issues or concerns you may have. \n Thank you for choosing our company for your purchase. We value your business and look forward to serving you again in the future. \n Sincerely, \n AgroBasket',
                     from_email = settings.EMAIL_HOST_USER,
                     recipient_list = [order_status.email],
                     fail_silently=False,
@@ -318,12 +323,16 @@ def updatefinalstatus(request,cartid):
         return redirect('devorders')
 
 def recoomendation_function():
-    amazon_ratings = pd.read_csv(static('Crops1.csv'))
-    amazon_ratings = amazon_ratings.dropna()
-    amazon_ratings.head()
-    popular_products = pd.DataFrame(amazon_ratings.groupby('ProductId')['Rating'].count())
-    most_popular = popular_products.sort_values('Rating', ascending=False)
+    data1 = Products.objects.all().values()
+    df = pd.DataFrame(data1)
+    
+    df = pd.read_csv(static('Crops1.csv'))
+    df = df.dropna()
+    df.head()
+    popular_products = pd.DataFrame(df.groupby('category')['ratings'].count())
+    most_popular = popular_products.sort_values('ratings', ascending=False)
     most_popular.head(10)
+    print(most_popular.head(10))
     
 def generate_pdf(data):
     # Get the HTML template

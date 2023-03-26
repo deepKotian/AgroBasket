@@ -90,12 +90,26 @@
 ::-webkit-scrollbar-thumb:hover {
 	background-color: rgba(0, 0, 0, 0.3);
 }
-
+.flex-init-setup {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.flex-ppal-setup {
+  -webkit-flex-flow: column wrap;
+  -moz-flex-flow: column wrap;
+  flex-flow: column wrap;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+}
 .footer-clean {
+    overflow-x: hidden;
     padding:50px 0;
     background-color:#7ab927;
     color:#4b4c4d;
-    width: 2000px !important;
     margin: auto;
   }
   

@@ -33,7 +33,8 @@
     </div>
   </nav>
 <div class="dev-home">
-    <div class="location-heading">Currently serving in zipcode: <span style="font-weight: 500;">400067</span> </div>
+    <div class="location-heading" style="font-size: 1.5rem;">Currently serving in zipcode: <span style="font-weight: 500;">{{usercode}}</span> </div>
+    <div class="location-sub" style="font-size: 1.1rem; margin-left: 1rem;">List of all active orders in your zone</div>
     <div class="dev-container">
         {% for orders in allActiveOrders %}
         {% if orders.shipped_status == "False" %}

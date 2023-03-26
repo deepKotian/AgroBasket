@@ -17,6 +17,17 @@ body {
         font-weight: 700;
         text-transform: uppercase;
       }
+
+	  .goog-te-gadget {
+		color: #7ab927;
+	}
+	.goog-te-gadget span{
+		display: none;
+	}
+	.VIpgJd-ZVi9od-ORHb {
+		display: none !important;
+	}
+
 .navbar {
 	background-color: #7ab927 !important;
 	border: none !important;

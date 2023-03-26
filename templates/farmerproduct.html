@@ -18,7 +18,7 @@
         <div class="card__content">
           {{request.user}}
           <div class="card__title">{{product.name}}</div>
-          <p class="card__text">{{product.desc}}</p>
+          <p class="card__text">{{product.desc | truncatechars:55 | safe}}</p>
           <p class="card__price">₹{{product.price}}</p>
           <button class="btn btn--block card__btn" onclick="location.href='updateproduct/{{product.id}}'">Edit</button>
         </div>

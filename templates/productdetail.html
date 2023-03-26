@@ -18,8 +18,13 @@
           <h2 class="product-title">{{prod.name}}</h2>
           <!--category-->
           <h4 class="product-category">Fruits</h4>
+		  <h4 class="company-name">Kotian Ltd</h4>
           <h3 class="product-price"><s><h6>$200</h6></s>${{prod.price}}</h3>
           <p class="product-description">{{prod.desc}}</p>
+		  <p class="dates">Date harvested on:{{ prod.doh}}</p>
+		  <p class="dates">Date of storage: {{prod.dos}}</p>
+		  <p class="dates">City: {{prod.city}}</p>
+		  
         </div>      
 <!--         Buttons -->
         <h6 class="stock">{{prod.stock_status}}</h6>
@@ -66,13 +71,13 @@
 						<div class="d-flex flex-column pl-3">
 							<h5>{{review.username}}</h5>
 						</div>
-					</div>
+					</div><br>
 					
 					<div class="row">
 						<p>{{review.review}}</p>
-					</div>
+					</div></div><br>
 				{% endfor %}
-			</div>
+			</div></div></div>
 			<div class="feedback-writing">
 				<div class="heading-feedback-writing">
 					Submit your own Review

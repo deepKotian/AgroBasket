@@ -30,7 +30,20 @@ body {
 	font-family: Montserrat, sans-serif !important;
 	overflow-x: hidden;
 	}
-  
+  .btn{
+    font-size: 1rem;
+    margin-left: -1rem;
+    background-color: #7ab927;
+    border: none;
+    margin-left: 0rem;
+    color: #FFF;
+}
+.btn:hover{
+  background-color: #486d30;
+}
+.btn btn-primary addtocart{
+  color: #FFF !important;
+}
   .navbar {
     font-size: .925rem !important;
     background-color: #7ab927 !important;
@@ -112,6 +125,7 @@ body {
 
   .card-body{
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    min-height: 15rem;
   }
 
   .card-text-price{

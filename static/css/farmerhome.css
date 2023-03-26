@@ -35,8 +35,15 @@ body {
 	margin-left: 0;
 }
 
-
-
+.goog-te-gadget {
+	color: #7ab927;
+}
+.goog-te-gadget span{
+	display: none;
+}
+.VIpgJd-ZVi9od-ORHb {
+	display: none !important;
+}
 /** --------------------------------
  -- Sidebar
 -------------------------------- */

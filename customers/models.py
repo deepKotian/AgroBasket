@@ -24,8 +24,6 @@ class Delivery(models.Model):
     devname = models.CharField(max_length=255)
     order_id = models.CharField(max_length=255)
 
-
-
 class Products(models.Model):
     comp_name = models.CharField(max_length=255)
     product_id = models.AutoField
@@ -38,13 +36,15 @@ class Products(models.Model):
     slug =  AutoSlugField(populate_from='name', null=True)
     ratings = models.CharField(max_length=255)
     stock_status = models.CharField(max_length=255)
+    city = models.CharField(max_length=255, null=True)
+    doh = models.CharField(max_length=255, null=True)
+    dos = models.CharField(max_length=255, null=True)
 
 class Cart(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
     cart_id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
     completed = models.BooleanField(default=False)
     
-
     @property
     def get_cart_total(self):
         cartitems = self.cartitems_set.all()
